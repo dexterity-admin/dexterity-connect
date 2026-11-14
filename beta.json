@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.73",
-  "releasedAt": "2026-11-14T21:27:36.521Z",
-  "notes": "- Title bar Room chip, your day on your tile and in its menu, and switching offices\n- Plan: the full meeting and webinar suite inside Dexterity Connect\n- Chat: Pane tabs and the Room button get class names of their own\n- Chat redesign: title block grid, stacked group tiles, wider Ping me for, readable names on dark\n- Chat redesign: tool column near the bottom, leader from the branch tag, steady notes and sounds\n- Chat redesign: one Switchboard with lens chips, Panes side by side, spine tool column, title-block header",
+  "version": "0.1.75",
+  "releasedAt": "2026-11-14T21:35:48.453Z",
+  "notes": "- Gateway: keep Wrangler's local test state out of the repository",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.73-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.73/DexterityConnect-0.1.73-mac-arm64.dmg",
-      "size": 141012471,
-      "sha512": "v17mRMMqCLxpdThKN7hpOwoSPh3iLNavK6S+/3MHZF6v3/2JbpYx2crK/Yt2NYFSCblADoG6rkKGK/QoiJI1vg=="
+      "file": "DexterityConnect-0.1.75-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.75/DexterityConnect-0.1.75-mac-arm64.dmg",
+      "size": 141037844,
+      "sha512": "sPv8YRBWVglJTbrBM25XQRuFnu3vgok2AueZBzRAE9MdMydNPxB2OGIcyyH6U8o+iCIZMEAKyxeYb1kvrjl3aA=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.73-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.73/DexterityConnect-0.1.73-mac-x64.dmg",
-      "size": 145125684,
-      "sha512": "mZFNppQak07lBQ1H7TS58MbkNcnPWs8SThaCKyO9P1XRlSiM3X5M7rKEFkH77sJaAzs9GNSFEQU919Xnb6Konw=="
+      "file": "DexterityConnect-0.1.75-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.75/DexterityConnect-0.1.75-mac-x64.dmg",
+      "size": 145144686,
+      "sha512": "nAnTCunxugOJHU5eCs7M1SSLZdK9c1+DgNpPOMvMRn14pn8xbB59HTWmZ61rkgHvg8OWZ448clfTq93tH8wsdw=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.73.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.73/DexterityConnect-0.1.73.apk",
-      "size": 4296082,
-      "sha512": "rirwAH3VghhDTF7tBIEd2z/6FONKmeaQU6fVRr4fRW8HlZohzv81DjOtcSO6wyYnzF6LSD9l94wFOS8ZXkuK9w=="
+      "file": "DexterityConnect-0.1.75.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.75/DexterityConnect-0.1.75.apk",
+      "size": 4305902,
+      "sha512": "tcsPxSNkZRp6hebAVmXjJwXxDEZUr2qFQqsmv/nGF6BvxKAk3GJWaJupO23bELgXzN47aOkKRDc8NUGaRa2C5A=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.73.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.73/DexterityConnect-Setup-0.1.73.exe",
-      "size": 135040593,
-      "sha512": "mN0IQvx0vuYydEpgRdCZ5HwVNb2P3MyReSYkJu2U3vB1Zkuvv6AcfL07/IaWNY1yFRXptl+H+zKADI66CJ3tew=="
+      "file": "DexterityConnect-Setup-0.1.75.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.75/DexterityConnect-Setup-0.1.75.exe",
+      "size": 135048793,
+      "sha512": "dhaMawuCmknHgnBYmCEKrCFmBoqdohC4T/BcIXnMzvvCwVubenQ0wkEBbXYgjzg6uyJZg27vZkLmfTgv1wHWLw=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.73-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.73/DexterityConnectHub-0.1.73-win-x64.zip",
-      "size": 44845974,
-      "sha512": "B4BLwwOlTD18qjRK83ZBR5wgUKQvLjS7P274cm8za4BaM3XumCe6x9ZwWPgVcG3vd2rZFfHeP751cz5Tr44GCg=="
+      "file": "DexterityConnectHub-0.1.75-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.75/DexterityConnectHub-0.1.75-win-x64.zip",
+      "size": 44846281,
+      "sha512": "ybMGoKYBiSU4a4r8DOuehxg7dtHGop24k9Y+pqXQ32ZxuvA00/mq9bn4r6zJbaBu9fE5WKsSY5To4D460y0YMw=="
     }
   ]
 }
