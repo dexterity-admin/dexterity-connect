@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.35",
-  "releasedAt": "2026-11-14T17:47:43.359Z",
-  "notes": "- Office emoji",
+  "version": "0.1.37",
+  "releasedAt": "2026-11-14T17:57:39.363Z",
+  "notes": "- Ctrl+Shift+M mutes notification sounds; README and third-party notices",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.35-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.35/DexterityConnect-0.1.35-mac-arm64.dmg",
-      "size": 122871565,
-      "sha512": "yXZ3Qrp+O+D7VRH86JnL+kwo87T3nm/JKpNSm073Q+b3NmK0ewZA8yiewbrLBPexSxptqky+GK+ajeC70+ofgg=="
+      "file": "DexterityConnect-0.1.37-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.37/DexterityConnect-0.1.37-mac-arm64.dmg",
+      "size": 127329480,
+      "sha512": "V8Dc0mzERv8wZko6WvkBxMqdmkMX0NCqoMfipuopPkfrZ6m4DDBYX0UK5bw3ltfxwHAgxdj1+D0oAKRbFxV0SQ=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.35-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.35/DexterityConnect-0.1.35-mac-x64.dmg",
-      "size": 126983896,
-      "sha512": "DSizGGm+MS6LOhjxz2hV7lUS4urZu0Tuog4ZFJ2TMCdIIBKgi3JPTj881+XFyOhYc74eKAKphe0JZuOP4WFMZg=="
+      "file": "DexterityConnect-0.1.37-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.37/DexterityConnect-0.1.37-mac-x64.dmg",
+      "size": 131460388,
+      "sha512": "rfn4IrlYgXqil+zxefOKMoNt8zeouRDOd5fqBxkrUCKIu0+2WBKBpXjxmgNSPW6ghTk4EsEWGQwBqg592kI4aQ=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.35.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.35/DexterityConnect-0.1.35.apk",
-      "size": 4142824,
-      "sha512": "asVhzAczVYEAsPaQ7bkTSuTRv1zo4sEqxeFoMQgRAfRh2Xv4DFp2FVLsynTAdCO/IGjWnNa/rd4CjVVTkWCIpA=="
+      "file": "DexterityConnect-0.1.37.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.37/DexterityConnect-0.1.37.apk",
+      "size": 4151801,
+      "sha512": "i3BoT93AiNtdUS5EALgGCZUf8ukkgXF3eqmj9PuhoPlD4xUPh1WYkSQD7LamK1h1uv53wf3N49ZoXU91q0uIxg=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.35.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.35/DexterityConnect-Setup-0.1.35.exe",
-      "size": 121415866,
-      "sha512": "nz/bcKguOYVvo3h2aQW51XsIa4vV43xeTMhENhY2Iw4gvXKwR75lxGcv/pHswGIhMcuu/qZJQnStoYgSiRm8SQ=="
+      "file": "DexterityConnect-Setup-0.1.37.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.37/DexterityConnect-Setup-0.1.37.exe",
+      "size": 125503158,
+      "sha512": "k5LdNaXM0cdxY8CEipoTJ4OeazM8dofHICia7V6HnV92q3XTBMecSFQpyVDtzRZIEhtU3wdS4IXxeHg9KXem0w=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.35-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.35/DexterityConnectHub-0.1.35-win-x64.zip",
-      "size": 42549342,
-      "sha512": "XIq4Js59qiC7fxzgqpQN/80gh87p2f5AfvWZwHohn0NBDXWiCumlzpCDCLJaobPECAB5bnaJeAvcCpdRU+uOmw=="
+      "file": "DexterityConnectHub-0.1.37-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.37/DexterityConnectHub-0.1.37-win-x64.zip",
+      "size": 42549922,
+      "sha512": "PSxaaw7pSK7Drq0yuXfOKagzmAHM3qg/QyAWaV+/8Qgdju10Ewy1dZCN2fLoyW14qO/Vq73z6RXUez60kGafOg=="
     }
   ]
 }
