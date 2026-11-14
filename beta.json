@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.77",
-  "releasedAt": "2026-11-14T22:24:13.064Z",
-  "notes": "- Meetings M1: tiles follow cameras turned on mid-call, rung people skip the outsiders' lobby, plan updated\n- The Meet lens, meeting links, Calendar meetings by ID and the consent policy\n- The Room as a meeting: layouts, sheet-tab panel, lobby, host controls, backgrounds\n- Meetings on the hub: IDs and links, lobby and lock, co-hosts and host controls",
+  "version": "0.1.78",
+  "releasedAt": "2026-11-14T22:39:20.423Z",
+  "notes": "- Reaction insights: a history of reactions and what they show for a message\n- Link cards: previews of office, tool and web links, and side-tracks about a link\n- Communication style rewriter: concise, formal, diplomatic, explanatory, technical\n- Typecheck: hand AES-GCM key material over as a plain Uint8Array",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.77-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77-mac-arm64.dmg",
-      "size": 141149296,
-      "sha512": "AzHJF4R8oWAIhjO+pkDP93YqI2bdOJ/QW0sJX789NGHtG6Wj0WqZgm9A4ZmcSWasPnwsN9C9FCpcIPcVuSgDDA=="
+      "file": "DexterityConnect-0.1.78-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.78/DexterityConnect-0.1.78-mac-arm64.dmg",
+      "size": 141153849,
+      "sha512": "mH5jxajW0ujNXN8yJ6eGsvUZe/Dcb1oDbUNBoR8kt3Ht/XGVKIsIcaVPplPUqs/XArWADaUfGhLnDvx/S41tBg=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.77-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77-mac-x64.dmg",
-      "size": 145241609,
-      "sha512": "kgjS/Cds0/PqPiXq0L8z2PB9lJVqXc/emVyq20WucInQ13xFcN1OhnjurkhcLU1BP5ERaoYxNUpE4xI6Y75poQ=="
+      "file": "DexterityConnect-0.1.78-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.78/DexterityConnect-0.1.78-mac-x64.dmg",
+      "size": 145253171,
+      "sha512": "HcOrRnJ3MTTkpPfEnHhiRbeS6KE/Eml7QPH3TyTbflGgIzBIZNRZ8yPx2Ms3DDlOBpnyaoiPAqmbEyVlXn4jkg=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.77.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77.apk",
-      "size": 4403499,
-      "sha512": "EN8qUlu+p8SirhSyGac6qLIhuy5XX5JETGBam9rAW96jtj39f2xGsMq+bX2LXTLK9AgUHzT23qvyIFKa1StoQg=="
+      "file": "DexterityConnect-0.1.78.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.78/DexterityConnect-0.1.78.apk",
+      "size": 4403515,
+      "sha512": "wvhrdK7hkPol25rcA7njW+7w+HMQt0pV1fzCoFBpsPQfsu4et3A+8XJQJHkADK9PS06mZvEXczvTu+LkO+NdEQ=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.77.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-Setup-0.1.77.exe",
-      "size": 135114218,
-      "sha512": "r8D/l61M7bt67/+doD6yfq5ykmyRFGpgXDu564NG+xN7scUmJCwmBn1IjYx1+gMxmJ12r7+zZvgVVHTkSM4muQ=="
+      "file": "DexterityConnect-Setup-0.1.78.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.78/DexterityConnect-Setup-0.1.78.exe",
+      "size": 135115829,
+      "sha512": "xYBs+3xqOZRbw1BJ7GFhLhmEKP+ENIMEnsfI7pbip7xE92Mh2iN1/AVCOmPXtxjOHoxnajRCPHmjW7/zAVkfRw=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.77-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnectHub-0.1.77-win-x64.zip",
-      "size": 44853965,
-      "sha512": "kh8WRTsIZqaemb7dvWnfYjStU7z2M0L6ovJm0aabZ1Cl+SWkkvqlHUEaHOagFj66yIz8/Cy8K9ocN79E6SCv5A=="
+      "file": "DexterityConnectHub-0.1.78-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.78/DexterityConnectHub-0.1.78-win-x64.zip",
+      "size": 44871114,
+      "sha512": "7B2T7FzVAzIhSJmjgXxmkhE+uPZYBFm6WounLVc5xzfb+Mqe9MOneo+XDI4j2PLtR7gTgs73HYVDzKuqQtmz6w=="
     }
   ]
 }
