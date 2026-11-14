@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.27",
-  "releasedAt": "2026-11-14T16:59:51.933Z",
-  "notes": "- Sidebar organisation, Space moderation, timed statuses, out of office, tool links",
+  "version": "0.1.28",
+  "releasedAt": "2026-11-14T17:14:59.003Z",
+  "notes": "- Integration guide: what each office tool now does with Dexterity Connect",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.27-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.27/DexterityConnect-0.1.27-mac-arm64.dmg",
-      "size": 122853521,
-      "sha512": "E9IwqOf4KA8i0EpZj99m+Cz1AkD9gAgb+8blmHvWC1JUqFXDXCc54OIQT9cSz5sim8ATtysyg7KlisgrmNl6fw=="
+      "file": "DexterityConnect-0.1.28-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.28/DexterityConnect-0.1.28-mac-arm64.dmg",
+      "size": 122853516,
+      "sha512": "k6nZanIV/LcYijWLjd7i1YV8kqdvTWEt75u4p48O6LOzbIPSPICsi1wlmhxb5FEaLgp5VzXjNWaper2I8hQjuQ=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.27-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.27/DexterityConnect-0.1.27-mac-x64.dmg",
-      "size": 126990209,
-      "sha512": "B3wKdHHkzY+3h5xDOXoQDZ3hYdiPaRXdhPTQExZA0NmA4KacY8FKd/FcFk080BMzsaZJKf9mMSb6OKeCs+r21A=="
+      "file": "DexterityConnect-0.1.28-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.28/DexterityConnect-0.1.28-mac-x64.dmg",
+      "size": 126990244,
+      "sha512": "DD9OY9fkifufQJmAyjqpbUmseXYp/hm1L8mfLiGqgsA4Jhxf79DI+lwg8xynizk194pT+PLHur5H/T8FVohAeA=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.27.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.27/DexterityConnect-0.1.27.apk",
-      "size": 4124500,
-      "sha512": "8EmD1rH4PlMEnbw7uk2kEjDw77PtdmrZy2D7H2cAEEfF4QJ/SzgxEE+uU0322VM/LL2fvXW1BgTkzVGrNytJHA=="
+      "file": "DexterityConnect-0.1.28.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.28/DexterityConnect-0.1.28.apk",
+      "size": 4124496,
+      "sha512": "3knVO1tbJW2lsADZ3H2YMxkg7PvQ8UGCBQg3kWBHC7VB4zCFsdqM24sNr00r3xgrRaFwJzSih+4oIyVZRiQfyA=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.27.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.27/DexterityConnect-Setup-0.1.27.exe",
-      "size": 121401895,
-      "sha512": "jf/Dib0ZNzaeOlpRNBernzJmdWvMwabJhQtHxwKIIyDcpXRrNTl6IInAN9LOdX1HpBQOnFa9WpZKUxC/hJmD4A=="
+      "file": "DexterityConnect-Setup-0.1.28.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.28/DexterityConnect-Setup-0.1.28.exe",
+      "size": 121401625,
+      "sha512": "i3dVck6TtEWWWsLLw3/G+H7VZ9RC4ZCq+GbY7DFMQh6NfkWTM/eZDDcqp2keyoQR5BAKmKQe9vCDLjMMo7wdYA=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.27-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.27/DexterityConnectHub-0.1.27-win-x64.zip",
+      "file": "DexterityConnectHub-0.1.28-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.28/DexterityConnectHub-0.1.28-win-x64.zip",
       "size": 42545731,
-      "sha512": "oZR+Zq8lS9n5GFvKKqM7+QWCY6wTKVCTKi1iegQw0sn4Y5DS8TBHDZt04OqTn3uJU0CGaOrZKP8QTaZPmAslzg=="
+      "sha512": "iTRgXi7bjWWFl0Me/GhtmoHnrPS8tL1zlRpap7bz2KIt61VNVDTOhNOc+ifcU6/swmZ5D8uc0RdWy9nfgVnmkg=="
     }
   ]
 }
