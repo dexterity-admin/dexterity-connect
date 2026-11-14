@@ -88,6 +88,11 @@ section.block { padding: 120px 0; position: relative; }
 .dl .go { margin-top: 6px; color: var(--amber); font-weight: 600; font-size: 15px; }
 .dl.primary { background: linear-gradient(160deg, #164047, var(--panel) 70%); border-color: rgba(79,179,191,.35); }
 .channel-note { margin-top: 16px; font-size: 14px; color: var(--ink-3); }
+.scan-card { display: flex; gap: 22px; align-items: center; margin-top: 18px; padding: 18px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+.scan-card img { flex: none; border-radius: 10px; background: #fff; }
+.scan-card h3 { margin: 0 0 6px; font-size: 18px; }
+.scan-card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+@media (max-width: 560px) { .scan-card { flex-direction: column; align-items: flex-start; } }
 
 .feature { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: center; margin-top: 110px; }
 .feature.flip { grid-template-columns: 1.25fr 1fr; }
@@ -212,12 +217,16 @@ footer a { color: var(--ink-2); text-decoration: none; }
         </a>
         <a class="dl reveal" data-asset="apk" href="https://github.com/dexterity-admin/dexterity-connect/releases">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9h11v8a1.5 1.5 0 0 1-1.5 1.5h-1V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5H8A1.5 1.5 0 0 1 6.5 17zM4 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0zm2.6-4.9-.9-1.3a.3.3 0 0 1 .5-.3l.9 1.4a5 5 0 0 1 3.8 0l.9-1.4a.3.3 0 0 1 .5.3l-.9 1.3"/></svg>Android</span>
-          <span class="meta" data-meta="apk">Android 7 and newer · office Wi-Fi</span><span class="go">Download APK →</span>
+          <span class="meta" data-meta="apk">Android 7 and newer · anywhere</span><span class="go">Download APK →</span>
         </a>
         <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4zM7.5 7.5h.01M7.5 16.5h.01"/></svg>Office hub</span>
           <span class="meta" data-meta="hub">Windows service for one always-on PC</span><span class="go">Download hub →</span>
         </a>
+      </div>
+      <div class="scan-card reveal">
+        <img src="assets/get-qr.svg" alt="QR code that opens the Android download page" width="132" height="132" />
+        <div><h3>On your phone</h3><p>Point the camera here to download the Android app. To sign in as yourself, add the phone from your office PC: <b>Preferences → Your devices → Add my phone</b>. That QR code installs and pairs it in one go, with no approval needed.</p></div>
       </div>
       <p class="channel-note">Older Intel Mac? <a data-asset="mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases">Download the Intel version</a>.</p>
       <p class="channel-note" id="channel-note">Looking up the newest release…</p>

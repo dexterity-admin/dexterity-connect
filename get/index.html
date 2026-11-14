@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Get Dexterity Connect</title>
+<meta name="description" content="Install Dexterity Connect on your phone or laptop and pair it with your office account." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="../assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --night: #071315; --panel: #10282c; --panel-2: #163338; --line: rgba(232,242,243,.1);
+  --ink: #e8f2f3; --ink-2: #a9c3c6; --ink-3: #6f8f93; --teal: #2a8c98; --teal-2: #4fb3bf; --amber: #f7af44; --amber-2: #ff8f1f;
+  --display: 'Outfit', 'Segoe UI', system-ui, sans-serif; --body: 'Segoe UI', system-ui, -apple-system, sans-serif; --mono: 'JetBrains Mono', Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: radial-gradient(120% 70% at 50% -10%, #12363b 0%, var(--night) 60%); color: var(--ink); font-family: var(--body); min-height: 100%; }
+main { max-width: 520px; margin: 0 auto; padding: 36px 16px calc(36px + env(safe-area-inset-bottom)); display: grid; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 600; font-size: 18px; }
+.brand img { width: 40px; height: 40px; }
+h1 { font-family: var(--display); font-size: clamp(28px, 7vw, 38px); line-height: 1.1; margin: 8px 0 0; letter-spacing: -0.01em; }
+p { color: var(--ink-2); line-height: 1.55; margin: 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; gap: 12px; }
+.btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 20px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); font: 600 16px var(--display); text-decoration: none; cursor: pointer; }
+.btn.primary { background: linear-gradient(135deg, var(--amber), var(--amber-2)); color: #1c1205; border: 0; }
+.btn:focus-visible { outline: 3px solid var(--teal-2); outline-offset: 2px; }
+ol { margin: 0; padding-left: 20px; color: var(--ink-2); display: grid; gap: 8px; line-height: 1.5; }
+code { font-family: var(--mono); font-size: 12px; word-break: break-all; color: var(--ink); display: block; background: #0a1c1f; border: 1px solid var(--line); border-radius: 10px; padding: 10px; max-height: 6.5em; overflow: auto; }
+.note { font-size: 13px; color: var(--ink-3); }
+.ok { color: #7ee0a8; font-weight: 600; }
+.hidden { display: none !important; }
+.row { display: grid; gap: 10px; }
+@media (min-width: 560px) { .row.two { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="../assets/icon.svg" alt="" />Dexterity Connect</div>
+
+  <section id="with-code" class="hidden">
+    <h1>Pair your <span id="what">phone</span></h1>
+    <p>This adds Dexterity Connect on this device to your office account. It works once, for 24 hours from when your PC made it.</p>
+  </section>
+  <section id="no-code">
+    <h1>Get Dexterity Connect</h1>
+    <p>The office messenger of Dexterity Design Services. To use it on your own phone or laptop, open <b>Preferences → Your devices</b> on your office PC and add it from there.</p>
+  </section>
+
+  <div class="card" id="android">
+    <a class="btn primary" id="get-apk" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest">Download for Android</a>
+    <a class="btn hidden" id="open-app" href="#">Already installed? Open the app</a>
+    <ol id="android-steps">
+      <li>Tap <b>Download for Android</b>, then open the downloaded file. If Android asks, allow installs from your browser.</li>
+      <li>Open <b>Dexterity Connect</b>. <span id="paste-hint">It picks up your code by itself and signs you in.</span></li>
+    </ol>
+    <p class="note" id="copied-note"></p>
+  </div>
+
+  <div class="card hidden" id="desktop">
+    <div class="row two">
+      <a class="btn primary" id="get-win" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest">Windows</a>
+      <a class="btn" id="get-mac" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest">macOS</a>
+    </div>
+    <p class="note">Older Intel Mac? <a id="get-mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest" style="color: var(--teal-2)">Intel version</a>.</p>
+    <ol id="desktop-steps" class="hidden">
+      <li>Install and open Dexterity Connect.</li>
+      <li>Paste this code when it asks (<button class="btn" id="copy" style="display: inline-flex; min-height: 32px; padding: 0 12px; font-size: 13px">Copy code</button>):</li>
+    </ol>
+    <code id="code" class="hidden"></code>
+  </div>
+
+  <p class="note" id="version">Looking up the newest version…</p>
+  <p class="note">The pairing code stays in this page: it is not sent to any server. <a href="../" style="color: var(--teal-2)">About Dexterity Connect</a></p>
+</main>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const m = decodeURIComponent(location.hash.slice(1)).match(/DXP1-[A-Za-z0-9_-]+/);
+  const code = m ? m[0] : null;
+  const ua = navigator.userAgent;
+  const android = /Android/i.test(ua);
+  const mobileOther = /iPhone|iPad|iPod/i.test(ua);
+  let kind = 'phone';
+  if (code) {
+    try {
+      const s = code.slice(5).replace(/-/g, '+').replace(/_/g, '/');
+      const j = JSON.parse(atob(s + '='.repeat((4 - (s.length % 4)) % 4)));
+      if (j.k === 'laptop') kind = 'laptop';
+    } catch (e) { /* the app checks the code properly */ }
+    $('with-code').classList.remove('hidden');
+    $('no-code').classList.add('hidden');
+    $('what').textContent = android ? 'phone' : kind;
+    $('code').textContent = code;
+  }
+  if (!android) {
+    $('android').classList.toggle('hidden', !code && !mobileOther ? false : !mobileOther ? true : true);
+    $('desktop').classList.remove('hidden');
+    if (code) { $('desktop-steps').classList.remove('hidden'); $('code').classList.remove('hidden'); }
+    if (mobileOther) $('version').textContent = 'Dexterity Connect is available for Android, Windows and macOS.';
+  }
+  if (!android && !mobileOther && !code) $('android').classList.remove('hidden');
+
+  const copy = async () => {
+    if (!code) return false;
+    try { await navigator.clipboard.writeText(code); return true; } catch (e) {
+      const t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch (e2) { ok = false; } t.remove(); return ok;
+    }
+  };
+  if (code && android) {
+    const open = $('open-app');
+    open.classList.remove('hidden');
+    open.href = `intent://pair?code=${encodeURIComponent(code)}#Intent;scheme=dexconnect;package=in.co.dexteritydesign.connect;end`;
+    $('get-apk').addEventListener('click', () => {
+      void copy().then((ok) => { $('copied-note').innerHTML = ok ? '<span class="ok">Code copied.</span> The app finds it when you open it.' : 'If the app asks for a code, come back to this page and tap <b>Already installed? Open the app</b>.'; });
+    });
+  } else if (!code) {
+    $('paste-hint').textContent = 'Then pair it from your office PC: Preferences → Your devices → Add my phone.';
+  }
+  $('copy').addEventListener('click', () => { void copy().then((ok) => { $('copy').textContent = ok ? 'Copied' : 'Select and copy below'; }); });
+
+  fetch('https://api.github.com/repos/dexterity-admin/dexterity-connect/releases/latest')
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((rel) => {
+      const find = (re) => (rel.assets || []).find((a) => re.test(a.name));
+      const set = (id, re) => { const a = find(re); if (a) $(id).href = a.browser_download_url; };
+      set('get-apk', /\.apk$/); set('get-win', /Setup.*\.exe$/); set('get-mac', /mac-arm64\.dmg$/); set('get-mac-x64', /mac-x64\.dmg$/);
+      $('version').textContent = `Version ${String(rel.tag_name || '').replace(/^v/, '')}, checked with SHA-256 on the release page.`;
+    })
+    .catch(() => { $('version').textContent = 'The buttons open the release page; pick the file for your device there.'; });
+})();
+</script>
+</body>
+</html>
