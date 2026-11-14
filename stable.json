@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "channel": "stable",
+  "version": "0.1.55",
+  "releasedAt": "2026-11-14T19:47:52.345Z",
+  "notes": "- Message link cards: an accessible name for screen readers\n- Docs: features from the recent batches, webhooks, message links, remote access; full shortcuts list\n- Message links show a preview; profiles show Spaces and calls in common\n- Pop-out windows, a global hotkey, Slack-style webhooks\n- Reports, removing with a reason, group to Space, default Spaces, poll export\n- Out of office replies, In a meeting, quiet hours, 12/24-hour time\n- Calls: add people, pop out, connection quality, computer sound\n- Image viewer with zoom, pan, rotate and mark-up; voice speed; Markdown previews\n- Mentions and replies, side-tracks you follow, jump to a date, sidebar order\n- Read receipts per message, last seen, notices, status emoji, quick reactions\n- Richer formatting and a better composer\n- Remote access: limit join requests from outside; security review and setup guide\n- Calls across networks; a workflow that deploys the gateway\n- Outside the office on Android\n- Outside the office on the desktop: setup codes, files and status\n- Internet gateway: reach the office hub from any network\n- Ctrl+Shift+M mutes notification sounds; README and third-party notices\n- Text in images is searchable\n- Office emoji\n- Call recording\n- Video messages and screen recordings\n- Keep the hub's configured upload limit until an administrator sets one\n- Office policies and usage report\n- Search with filters\n- Notification preferences, sounds, density, text size, shortcuts; Android notifications\n- Message actions: quote, reply privately, copy link, multi-select\n- Integration guide: what each office tool now does with Dexterity Connect\n- Sidebar organisation, Space moderation, timed statuses, out of office, tool links\n- Share to Dexterity Connect from any office tool\n- Files on phones and a phone-sized layout",
+  "assets": [
+    {
+      "platform": "mac-arm64",
+      "file": "DexterityConnect-0.1.55-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.55/DexterityConnect-0.1.55-mac-arm64.dmg",
+      "size": 127382746,
+      "sha512": "p6FnUlkMCMc1Onk5qD4m4fLSPIO6DLNf4n2VfNt4vAFDtBqm3KKVpRlYTYn+yqfaw4PVRUzz/tVu1bPWX5t2vw=="
+    },
+    {
+      "platform": "mac-x64",
+      "file": "DexterityConnect-0.1.55-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.55/DexterityConnect-0.1.55-mac-x64.dmg",
+      "size": 131486802,
+      "sha512": "iXWWPbEkcq3uhlTAn1XWk2uljN9pNJvCgxITNBMoDL4CmnduwAiDXoZSdit4WAlqgeTfGOtGxZZtHxqHXCzL+w=="
+    },
+    {
+      "platform": "android",
+      "file": "DexterityConnect-0.1.55.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.55/DexterityConnect-0.1.55.apk",
+      "size": 4185201,
+      "sha512": "di+TDMnLRwLw/3KEnm0q7P3nHqWDJbJRE0cc1ZjQFsgqQ6BcxXR7a0zKx3bjepkHvc3zkVBS0MVHghKExonR2A=="
+    },
+    {
+      "platform": "win-x64",
+      "file": "DexterityConnect-Setup-0.1.55.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.55/DexterityConnect-Setup-0.1.55.exe",
+      "size": 125540207,
+      "sha512": "egdvCkobUIPmhFw1Cf/5qhFbQKID4dN8gfRla7oqk9bB0XLYrAMsnZ0Wu5btv5f2Ad7aTD5ICk/iArE8knowZA=="
+    },
+    {
+      "platform": "hub-win-x64",
+      "file": "DexterityConnectHub-0.1.55-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.55/DexterityConnectHub-0.1.55-win-x64.zip",
+      "size": 42583678,
+      "sha512": "4Ri9FRyFetVt3K7+Q+5co8INSIu166a0lU4aaHOBUsZ64RzTQbo0DdoS8wT1bAiN/xaXGFiLc520QNJZWB7Ruw=="
+    }
+  ]
+}
