@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.76",
-  "releasedAt": "2026-11-14T21:51:12.227Z",
-  "notes": "- Hindi and Tamil translations; the title bar and message tools stay reachable; the day's line greets once a day",
+  "version": "0.1.77",
+  "releasedAt": "2026-11-14T22:24:13.064Z",
+  "notes": "- Meetings M1: tiles follow cameras turned on mid-call, rung people skip the outsiders' lobby, plan updated\n- The Meet lens, meeting links, Calendar meetings by ID and the consent policy\n- The Room as a meeting: layouts, sheet-tab panel, lobby, host controls, backgrounds\n- Meetings on the hub: IDs and links, lobby and lock, co-hosts and host controls",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.76-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.76/DexterityConnect-0.1.76-mac-arm64.dmg",
-      "size": 141111121,
-      "sha512": "yfpPfhY1X6wZ7chapYZ39qLt3jqMa7pmkEqxwgrbwd2QSW24I43eWWvn7byGD+JSB0h3Qe2l67e6cNNkBe94eQ=="
+      "file": "DexterityConnect-0.1.77-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77-mac-arm64.dmg",
+      "size": 141149296,
+      "sha512": "AzHJF4R8oWAIhjO+pkDP93YqI2bdOJ/QW0sJX789NGHtG6Wj0WqZgm9A4ZmcSWasPnwsN9C9FCpcIPcVuSgDDA=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.76-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.76/DexterityConnect-0.1.76-mac-x64.dmg",
-      "size": 145246378,
-      "sha512": "isxGInDEgLtP+heMVar7tPlHSbJYYVuB1K4pzP0HBGXjRfiBm7nxPUK3AHVEqVlM41TNwA3zn7ZxSI37ipMsNw=="
+      "file": "DexterityConnect-0.1.77-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77-mac-x64.dmg",
+      "size": 145241609,
+      "sha512": "kgjS/Cds0/PqPiXq0L8z2PB9lJVqXc/emVyq20WucInQ13xFcN1OhnjurkhcLU1BP5ERaoYxNUpE4xI6Y75poQ=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.76.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.76/DexterityConnect-0.1.76.apk",
-      "size": 4378978,
-      "sha512": "iPWS5jLZsK7k04mP0rRFlRDRQEFyatCLm9k7V+G5uJaZJaIdYGFs8a7gq6rfcsXz5J+rB7yaBg9ab3OvKHXxKQ=="
+      "file": "DexterityConnect-0.1.77.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-0.1.77.apk",
+      "size": 4403499,
+      "sha512": "EN8qUlu+p8SirhSyGac6qLIhuy5XX5JETGBam9rAW96jtj39f2xGsMq+bX2LXTLK9AgUHzT23qvyIFKa1StoQg=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.76.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.76/DexterityConnect-Setup-0.1.76.exe",
-      "size": 135092247,
-      "sha512": "Kn9st7olNaStqVu1sv1YMD06NhWGFm5EdCFnFUU0jWCFsjQmYDL2SHRdWjhHvdsPPz//ZxpYQKfqHt5cKSJYyw=="
+      "file": "DexterityConnect-Setup-0.1.77.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnect-Setup-0.1.77.exe",
+      "size": 135114218,
+      "sha512": "r8D/l61M7bt67/+doD6yfq5ykmyRFGpgXDu564NG+xN7scUmJCwmBn1IjYx1+gMxmJ12r7+zZvgVVHTkSM4muQ=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.76-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.76/DexterityConnectHub-0.1.76-win-x64.zip",
-      "size": 44846281,
-      "sha512": "Yo9AhzR0cYrRWFotDyUt65EY4pgDt1cmBJ/CPVBNG/mDGOUblGxzG244hFaVl7mwJGq+k8Mkk08q4xxS89nFAQ=="
+      "file": "DexterityConnectHub-0.1.77-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.77/DexterityConnectHub-0.1.77-win-x64.zip",
+      "size": 44853965,
+      "sha512": "kh8WRTsIZqaemb7dvWnfYjStU7z2M0L6ovJm0aabZ1Cl+SWkkvqlHUEaHOagFj66yIz8/Cy8K9ocN79E6SCv5A=="
     }
   ]
 }
