@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "channel": "beta",
+  "version": "0.1.12",
+  "releasedAt": "2026-11-14T14:43:07.270Z",
+  "notes": "- CI: include the feed script (was caught by a broad .gitignore) and build both Mac architectures",
+  "assets": [
+    {
+      "platform": "mac-arm64",
+      "file": "DexterityConnect-0.1.12-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.12/DexterityConnect-0.1.12-mac-arm64.dmg",
+      "size": 122605421,
+      "sha512": "dVJiF2rf+R+bX6Y3sCfeRv5XuuzlZHmXEsKbzoxhQgGfNOrQCaVOJdvSkAJNBaZprivZutcbFXsZSE4rCPfyPA=="
+    },
+    {
+      "platform": "mac-x64",
+      "file": "DexterityConnect-0.1.12-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.12/DexterityConnect-0.1.12-mac-x64.dmg",
+      "size": 126709095,
+      "sha512": "M/7OwpKka9Ctgj2/aVaQudsUEI7zWxIOkO0bIha5suLopqurrHPOnCYabXoHDKgX+coMmvGBERqPM8ogGAMMxg=="
+    },
+    {
+      "platform": "android",
+      "file": "DexterityConnect-0.1.12.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.12/DexterityConnect-0.1.12.apk",
+      "size": 4045619,
+      "sha512": "SPWeUDR64+zhdVOZ4OfZrARyeKDO2Bx+U51kXrcc0wXW8dU2lL/ZA9SZebdVdcsxgIgCq0V3aXfQM4nDhxuJXA=="
+    },
+    {
+      "platform": "win-x64",
+      "file": "DexterityConnect-Setup-0.1.12.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.12/DexterityConnect-Setup-0.1.12.exe",
+      "size": 121228127,
+      "sha512": "t9wmsWXesKLZpAcJyVx5pIcXFgzxsr4WEn36aD9rkzBTGgdV8viFwMZoiBwehKvFB0G0e3tvcCTiLKGyUwBXsA=="
+    },
+    {
+      "platform": "hub-win-x64",
+      "file": "DexterityConnectHub-0.1.12-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.12/DexterityConnectHub-0.1.12-win-x64.zip",
+      "size": 42506657,
+      "sha512": "z+rx3MSk0GMYyMrnLKMWeJUekQVJjo/oMU6iRwHyCzPiI9kLtXRGdTLu8v3ii8WRsWxU9kv8tWAkb3rxQNu80g=="
+    }
+  ]
+}
