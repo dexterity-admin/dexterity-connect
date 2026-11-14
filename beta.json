@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "beta",
-  "version": "0.1.53",
-  "releasedAt": "2026-11-14T19:43:20.876Z",
-  "notes": "- Message link cards: an accessible name for screen readers",
+  "version": "0.1.56",
+  "releasedAt": "2026-11-14T19:55:51.415Z",
+  "notes": "- README: approvals are in the Control room\n- Add mentions, channel mute and live read receipts\n- Ship Lattice v1: offline-first LAN messenger with a desktop shell\n- Initial commit",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.53-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.53/DexterityConnect-0.1.53-mac-arm64.dmg",
-      "size": 127382888,
-      "sha512": "gSWxJ8s4fV06+xvZeKZlj+B1FB8gl+fpN6i5vCN0Ft1QlxC/a8rnVUQ8JayGSc6LC23Phx20kI5pZkanyzK9Lw=="
+      "file": "DexterityConnect-0.1.56-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.56/DexterityConnect-0.1.56-mac-arm64.dmg",
+      "size": 127382742,
+      "sha512": "xJjoCTHWQQ6ddhQtyNZHfzW815oRVg2J7pVpi1U+eJfxmvON/oskGipviyRaNcXh08uXXcnnNLaoWbQf0Z8rYw=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.53-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.53/DexterityConnect-0.1.53-mac-x64.dmg",
-      "size": 131486727,
-      "sha512": "9hZmCpHHNnM27Zmx+CELPbTzCiza3EYyAHjsmoj1YanbOVggudyb31g3MaWH4jbu//YuhcjnxlkcvzTKsjHOmA=="
+      "file": "DexterityConnect-0.1.56-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.56/DexterityConnect-0.1.56-mac-x64.dmg",
+      "size": 131486710,
+      "sha512": "cBMBF8d8xNWDepMij4D8CeEB/lvmVQw4W9XjjMEmwhGjkzJe4o5wJYNVcdl5h9A5Wk/VnLGyWL5OiLQayzVz0g=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.53.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.53/DexterityConnect-0.1.53.apk",
+      "file": "DexterityConnect-0.1.56.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.56/DexterityConnect-0.1.56.apk",
       "size": 4185201,
-      "sha512": "HG/uutfoyo4kiMRLRVPaBeOHS3rWwM1cgHkv4eQAItPtOYoDlOlhhVyBV/ALK9OK09bS3v6sJ7WU8o4ctO/MbA=="
+      "sha512": "ztBk70R78im/CpoVxNWGZksIT2P4dfMGwVFFH0xAe+37kXCiIxJ0ZMpWSjlqBmHF+qCxgLGJwGIAbe06ImF1cA=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.53.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.53/DexterityConnect-Setup-0.1.53.exe",
-      "size": 125540040,
-      "sha512": "zxYjrco33z8d6ygw2ac7axMsZGcY+xwei4XeztvyZmoFeI9eWaUtjqFyXg1QoI/6ob88jDEjz2qipBL/+4Ts3A=="
+      "file": "DexterityConnect-Setup-0.1.56.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.56/DexterityConnect-Setup-0.1.56.exe",
+      "size": 125540492,
+      "sha512": "hUm57pvNBLVDKAuneHuGozCoeGa8MwEVH/JqPJPXoCarZywVvQzj2qOMksU9FHoHa3igEIg5xObXjWDAAtNM/Q=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-0.1.53-win-x64.zip",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.53/DexterityConnectHub-0.1.53-win-x64.zip",
+      "file": "DexterityConnectHub-0.1.56-win-x64.zip",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.56/DexterityConnectHub-0.1.56-win-x64.zip",
       "size": 42583678,
-      "sha512": "TieKB2Q+EAafT51oKDJ52xsVA5WjL34ynpMjjeiolJqBhK9EunUw8uhSHc6RDICKDYv7ZoLXJymK7R2Gjeph8w=="
+      "sha512": "XpmPF3TwBnyTZd2oDkjTkq1REl+60xcVZ0uu8sO/xOhgga8bv3X/QaR4Cr+JKxjVbpEMAd95gaTu9IjAxfaIAA=="
     }
   ]
 }
