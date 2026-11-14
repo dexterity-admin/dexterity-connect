@@ -1,2 +1,0 @@
-# dexterity-connect
-dexterity-connect

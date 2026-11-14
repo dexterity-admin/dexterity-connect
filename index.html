@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dexterity Connect · Messages, files and calls for the office network</title>
+<meta name="description" content="Dexterity Connect is the internal messenger of Dexterity Design Services: Spaces, Direct conversations, files and calls that stay on the office network and work without internet." />
+<meta property="og:title" content="Dexterity Connect" />
+<meta property="og:description" content="Your office, connected. No internet required." />
+<meta property="og:image" content="assets/icon-512.png" />
+<meta name="theme-color" content="#071315" />
+<link rel="icon" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --night: #071315; --deep: #0b1d20; --panel: #10282c; --panel-2: #163338; --line: rgba(232,242,243,.09);
+  --ink: #e8f2f3; --ink-2: #a9c3c6; --ink-3: #6f8f93;
+  --teal: #2a8c98; --teal-2: #4fb3bf; --teal-3: #8fd8e0; --amber: #f7af44; --amber-2: #ff8f1f;
+  --display: 'Outfit', 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--night); color: var(--ink); font: 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.02em; margin: 0; }
+.label { font: 600 12px/1.4 var(--body); text-transform: uppercase; letter-spacing: .16em; color: var(--teal-3); }
+.mono { font-family: var(--mono); }
+.wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+
+/* ---------------------------------------------------------- nav */
+.nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, backdrop-filter .3s, border-color .3s; border-bottom: 1px solid transparent; }
+.nav.solid { background: rgba(7,19,21,.72); backdrop-filter: blur(16px) saturate(1.3); border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; gap: 28px; height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 600 16px var(--display); text-decoration: none; }
+.brand img { width: 28px; height: 28px; }
+.nav nav { display: flex; gap: 22px; margin-left: auto; }
+.nav nav a { text-decoration: none; color: var(--ink-2); font-size: 15px; transition: color .2s; }
+.nav nav a:hover { color: var(--ink); }
+.pill { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 20px; text-decoration: none; font: 600 15px var(--body); border: 0; cursor: pointer; }
+.pill.amber { background: linear-gradient(135deg, var(--amber), var(--amber-2)); color: #2a1700; box-shadow: 0 8px 28px rgba(247,175,68,.28); }
+.pill.ghost { background: rgba(232,242,243,.06); color: var(--ink); border: 1px solid var(--line); }
+.pill:hover { filter: brightness(1.06); }
+
+/* ---------------------------------------------------------- the cinematic stage */
+.story { position: relative; height: 620vh; }
+.stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 35%, transparent 40%, rgba(7,19,21,.85) 100%), linear-gradient(transparent 55%, rgba(7,19,21,.78) 88%); }
+.beat { position: absolute; left: 0; right: 0; bottom: 12vh; text-align: center; pointer-events: none; opacity: 0; transform: translateY(24px); }
+.beat h1 { font-size: clamp(40px, 6vw, 80px); line-height: 1.02; }
+.beat h2 { font-size: clamp(32px, 5vw, 64px); line-height: 1.05; }
+.beat p { max-width: 640px; margin: 18px auto 0; font-size: clamp(16px, 1.6vw, 20px); color: var(--ink-2); }
+.beat .label { margin-bottom: 16px; display: block; }
+.beat.hero { bottom: 9vh; }
+.beat h1, .beat h2, .beat p { text-shadow: 0 2px 30px rgba(7,19,21,.95); }
+.beat.hero .cta { pointer-events: auto; display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
+.beat.hero .meta { margin-top: 14px; font: 13px var(--mono); color: var(--ink-3); }
+.scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); font: 12px var(--mono); color: var(--ink-3); letter-spacing: .12em; text-transform: uppercase; }
+.scroll-hint::after { content: ''; display: block; width: 1px; height: 34px; margin: 10px auto 0; background: linear-gradient(var(--teal-2), transparent); animation: drip 1.8s infinite; }
+@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 60% { transform: scaleY(1); transform-origin: top; } 61% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+.progress { position: absolute; right: 26px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px; }
+.progress i { width: 3px; height: 22px; border-radius: 2px; background: rgba(232,242,243,.14); transition: background .3s, height .3s; }
+.progress i.on { background: var(--amber); height: 34px; }
+.still .story { height: auto; }
+.still .stage { position: relative; height: auto; padding: 140px 0 60px; }
+.still #scene, .still .scroll-hint, .still .progress { display: none; }
+.still .beat { position: relative; opacity: 1; transform: none; bottom: auto; top: auto; margin: 0 auto 60px; }
+.still .beat:not(.hero) { display: none; }
+
+/* ---------------------------------------------------------- sections */
+section.block { padding: 120px 0; position: relative; }
+.block h2 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1.06; max-width: 820px; }
+.block .lede { color: var(--ink-2); font-size: 19px; max-width: 680px; margin-top: 18px; }
+.grid-bg { background-image: linear-gradient(rgba(79,179,191,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(79,179,191,.06) 1px, transparent 1px); background-size: 32px 32px; }
+
+.downloads { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 44px; }
+.dl { display: grid; gap: 10px; padding: 24px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line); text-decoration: none; transition: transform .25s var(--ease), border-color .25s; }
+.dl:hover { transform: translateY(-4px); border-color: var(--teal); }
+.dl .os { display: flex; align-items: center; gap: 10px; font: 600 20px var(--display); }
+.dl .os svg { color: var(--teal-2); }
+.dl .meta { font: 12.5px var(--mono); color: var(--ink-3); }
+.dl .go { margin-top: 6px; color: var(--amber); font-weight: 600; font-size: 15px; }
+.dl.primary { background: linear-gradient(160deg, #164047, var(--panel) 70%); border-color: rgba(79,179,191,.35); }
+.channel-note { margin-top: 16px; font-size: 14px; color: var(--ink-3); }
+
+.feature { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: center; margin-top: 110px; }
+.feature.flip { grid-template-columns: 1.25fr 1fr; }
+.feature.flip .copy { order: 2; }
+.feature h3 { font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin: 12px 0 14px; }
+.feature p { color: var(--ink-2); margin: 0; }
+.ticks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
+.ticks li { position: relative; padding-left: 28px; color: var(--ink-2); }
+.ticks li::before { content: ''; position: absolute; left: 0; top: 9px; width: 14px; height: 8px; border-left: 2px solid var(--amber); border-bottom: 2px solid var(--amber); transform: rotate(-45deg); }
+.shot { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(79,179,191,.08); transform: perspective(1400px) rotateY(-6deg) rotateX(3deg); transition: transform .6s var(--ease); background: var(--deep); }
+.feature.flip .shot { transform: perspective(1400px) rotateY(6deg) rotateX(3deg); }
+.shot:hover { transform: perspective(1400px) rotateY(0) rotateX(0); }
+.phone-shot { width: 280px; margin: 0 auto; border-radius: 34px; padding: 10px; background: #0d2124; border: 1px solid var(--line); box-shadow: 0 40px 90px rgba(0,0,0,.55); }
+.phone-shot img { border-radius: 26px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 48px; }
+.card { padding: 24px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+.card h3 { font-size: 19px; margin: 14px 0 8px; }
+.card p { color: var(--ink-2); font-size: 15.5px; margin: 0; }
+.card .ico { width: 40px; height: 40px; border-radius: 30%; display: grid; place-items: center; background: rgba(79,179,191,.12); color: var(--teal-2); }
+.tool { position: relative; overflow: hidden; }
+.tool .name { font: 600 13px var(--mono); color: var(--amber); letter-spacing: .06em; text-transform: uppercase; }
+.tool::after { content: ''; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; border: 1px dashed rgba(79,179,191,.25); }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; counter-reset: s; }
+.step { padding: 28px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); counter-increment: s; }
+.step::before { content: counter(s, decimal-leading-zero); display: block; font: 600 40px var(--display); color: var(--teal); margin-bottom: 8px; }
+.step p { color: var(--ink-2); margin: 8px 0 0; font-size: 15.5px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 56px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.stats div { padding: 28px; background: var(--deep); }
+.stats b { display: block; font: 600 40px var(--display); color: var(--ink); }
+.stats span { color: var(--ink-3); font-size: 14px; }
+
+table.keys { width: 100%; border-collapse: collapse; margin-top: 36px; font-size: 15.5px; }
+.keys td { padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+.keys td:first-child { width: 40%; }
+kbd { font: 13px var(--mono); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(232,242,243,.2); background: rgba(232,242,243,.05); color: var(--ink); margin-right: 4px; }
+
+.faq { margin-top: 40px; display: grid; gap: 10px; }
+.faq details { border-radius: 14px; background: var(--panel); border: 1px solid var(--line); padding: 18px 22px; }
+.faq summary { cursor: pointer; font: 600 17px var(--display); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: '+'; color: var(--teal-2); font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: '–'; }
+.faq p { color: var(--ink-2); margin: 12px 0 0; }
+
+.final { text-align: center; padding: 140px 0; }
+.final h2 { margin: 0 auto; }
+.final .cta { display: flex; gap: 12px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+footer { border-top: 1px solid var(--line); padding: 36px 0 48px; color: var(--ink-3); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; }
+footer a { color: var(--ink-2); text-decoration: none; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.still .reveal { opacity: 1; transform: none; }
+
+@media (max-width: 860px) {
+  .nav nav { display: none; }
+  .feature, .feature.flip { grid-template-columns: 1fr; gap: 32px; margin-top: 80px; }
+  .feature.flip .copy { order: 0; }
+  .steps, .stats { grid-template-columns: 1fr 1fr; }
+  .progress { display: none; }
+  section.block { padding: 84px 0; }
+}
+@media (max-width: 520px) { .steps, .stats { grid-template-columns: 1fr; } }
+</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icon.svg" alt="" />Dexterity Connect</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#security">Security</a>
+      <a href="#setup">Set-up</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="pill amber" href="#download">Download</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="story" id="story">
+    <div class="stage">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="vignette"></div>
+      <div class="beat hero" data-beat="0">
+        <span class="label">Internal tool · Dexterity Design Services</span>
+        <h1>Your office,<br />connected.</h1>
+        <p>Messages, files and calls that never leave the building. No internet required, no accounts to remember.</p>
+        <div class="cta"><a class="pill amber" href="#download">Download for Windows</a><a class="pill ghost" href="#features">See what it does</a></div>
+        <div class="meta" id="hero-meta">Windows 10 &amp; 11 · macOS · Android · updates itself</div>
+      </div>
+      <div class="beat" data-beat="1"><span class="label">01 · Discovery</span><h2>It finds everyone.</h2><p>Every PC finds the office hub on its own and signs in with Windows. An admin approves each new device once, matching an 8-character code.</p></div>
+      <div class="beat" data-beat="2"><span class="label">02 · Live</span><h2>Instant, across the floor.</h2><p>Spaces, Direct conversations, side-tracks and mentions arrive in milliseconds over the office network.</p></div>
+      <div class="beat" data-beat="3"><span class="label">03 · Offline-first</span><h2>Cut the cable.<br />Keep talking.</h2><p>Nothing depends on the internet. The hub keeps history, mirrors updates and approves devices, all inside the office.</p></div>
+      <div class="beat" data-beat="4"><span class="label">04 · Everywhere</span><h2>In your pocket, too.</h2><p>Android phones on the office Wi-Fi join the same conversations, with the same security.</p></div>
+      <div class="scroll-hint">Scroll</div>
+      <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <section class="block grid-bg" id="download">
+    <div class="wrap">
+      <span class="label reveal">Download</span>
+      <h2 class="reveal">Install once. It keeps itself up to date.</h2>
+      <p class="lede reveal">Every installer is checked with SHA-256, installs per user without admin rights, and updates from the office hub, even on PCs without internet.</p>
+      <div class="downloads">
+        <a class="dl primary reveal" data-asset="win" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+          <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.5v7H3zm8.5-1.1L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>Windows</span>
+          <span class="meta" data-meta="win">Windows 10 and 11 · 64-bit</span><span class="go">Download installer →</span>
+        </a>
+        <a class="dl reveal" data-asset="mac-arm64" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+          <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8C7 7.3 5.5 8.2 4.7 9.6c-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.2 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.8-4zM14.2 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>macOS</span>
+          <span class="meta" data-meta="mac-arm64">Apple silicon (M1 and newer)</span><span class="go">Download →</span>
+        </a>
+        <a class="dl reveal" data-asset="apk" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+          <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9h11v8a1.5 1.5 0 0 1-1.5 1.5h-1V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5H8A1.5 1.5 0 0 1 6.5 17zM4 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0zm2.6-4.9-.9-1.3a.3.3 0 0 1 .5-.3l.9 1.4a5 5 0 0 1 3.8 0l.9-1.4a.3.3 0 0 1 .5.3l-.9 1.3"/></svg>Android</span>
+          <span class="meta" data-meta="apk">Android 7 and newer · office Wi-Fi</span><span class="go">Download APK →</span>
+        </a>
+        <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+          <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4zM7.5 7.5h.01M7.5 16.5h.01"/></svg>Office hub</span>
+          <span class="meta" data-meta="hub">Windows service for one always-on PC</span><span class="go">Download hub →</span>
+        </a>
+      </div>
+      <p class="channel-note">Older Intel Mac? <a data-asset="mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases">Download the Intel version</a>.</p>
+      <p class="channel-note" id="channel-note">Looking up the newest release…</p>
+    </div>
+  </section>
+
+  <section class="block" id="features">
+    <div class="wrap">
+      <span class="label reveal">Features</span>
+      <h2 class="reveal">Built like a drafting table, not another chat app.</h2>
+      <p class="lede reveal">Everything Dexterity needs from a workplace messenger, with a design language of our own: lenses instead of tabs, a spine timeline, and a floating Dock.</p>
+
+      <div class="feature reveal">
+        <div class="copy">
+          <span class="label">Spaces &amp; Direct</span>
+          <h3>Conversations that read like a revision history.</h3>
+          <p>Messages hang off a single spine in runs, with day marks like a title block. Your own runs carry an amber notch, so you can find your part instantly.</p>
+          <ul class="ticks"><li>Open and private Spaces for teams and projects</li><li>Direct conversations for one-to-one and small groups</li><li>Line numbers like <span class="mono">6"-P-1001-A1B</span> are recognised automatically</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-space-light.png" alt="A Space in Dexterity Connect" loading="lazy" /></div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="copy">
+          <span class="label">Side-tracks</span>
+          <h3>Side discussions stay attached to the question.</h3>
+          <p>Reply in a side-track and the conversation keeps its place, visibly connected to the message that started it. Nobody loses the thread.</p>
+          <ul class="ticks"><li>Reactions, pins, edits and deletes</li><li>@mentions with a personal amber highlight</li><li>"Seen" receipts and typing indicators</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-sidetrack.png" alt="A side-track next to a Space" loading="lazy" /></div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="copy">
+          <span class="label">Light &amp; dark</span>
+          <h3>At home on Windows 11, by day and by night.</h3>
+          <p>Mica surfaces, the system's light or dark mode, and a Ctrl+K palette that jumps to any person, Space or command.</p>
+          <ul class="ticks"><li>Pulse shows only what needs you</li><li>Native notifications that open the right conversation</li><li>Unread badge on the taskbar</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-space-dark.png" alt="Dexterity Connect in dark mode" loading="lazy" /></div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="copy">
+          <span class="label">Android</span>
+          <h3>The same office in your pocket.</h3>
+          <p>On the office Wi-Fi your phone finds the hub, links to your PC account and joins every conversation, with the same encryption and approvals.</p>
+        </div>
+        <div class="phone-shot"><img src="assets/screen-phone.png" alt="Dexterity Connect on a phone" loading="lazy" /></div>
+      </div>
+
+      <div class="stats reveal">
+        <div><b>0</b><span>connections to the internet needed</span></div>
+        <div><b>&lt;50 ms</b><span>message delivery across the office</span></div>
+        <div><b>~95 KB</b><span>interface code, so it opens instantly</span></div>
+        <div><b>4</b><span>platforms from one codebase</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block grid-bg" id="ecosystem">
+    <div class="wrap">
+      <span class="label reveal">Ecosystem</span>
+      <h2 class="reveal">The hub of Dexterity's own tools.</h2>
+      <p class="lede reveal">Dexterity Connect links the internal suite into one workspace, so work moves between tools without copy and paste.</p>
+      <div class="cards">
+        <div class="card tool reveal"><span class="name">Hopper</span><h3>Files, announced</h3><p>Files sent with Hopper and client-link events arrive as cards in your conversations. Hopper's alerts move here from Zoho Cliq.</p></div>
+        <div class="card tool reveal"><span class="name">Dexterity Sheets</span><h3>Live sheets in chat</h3><p>Sheets links unfold into cards showing who is editing, and cell @mentions reach you as messages.</p></div>
+        <div class="card tool reveal"><span class="name">Slate</span><h3>Notes, co-edited</h3><p>Every Space can keep shared notes in Slate. Text and CSV attachments open there for live co-editing.</p></div>
+        <div class="card tool reveal"><span class="name">Sleuth</span><h3>Find the tag</h3><p>Line numbers in messages link straight to the drawing in Sleuth, with the tag ringed in red.</p></div>
+        <div class="card tool reveal"><span class="name">Project Opener</span><h3>One click to the job</h3><p>Share a project and colleagues open every folder, drawing and tool in one go.</p></div>
+        <div class="card tool reveal"><span class="name">Datum</span><h3>Data book answers</h3><p>Type <span class="mono">/datum 6" 300# WN</span> to post a component card with key dimensions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="security">
+    <div class="wrap">
+      <span class="label reveal">Security</span>
+      <h2 class="reveal">Nothing leaves the office. Nobody joins uninvited.</h2>
+      <div class="cards">
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10.5h12V20H6zM8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div><h3>Device keys</h3><p>Every PC and phone has its own Ed25519 key, sealed by Windows. Signing in never involves a password.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.9 7 9 4.1-1.1 7-4.7 7-9V6zM9 12l2.2 2.2L15.5 10"/></svg></div><h3>Approved devices only</h3><p>An admin approves each new device by matching a code shown on both screens. Lost laptops are removed in one click.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4z"/></svg></div><h3>Pinned encryption</h3><p>All traffic is TLS, pinned to the hub's own certificate. Sign-in proofs are bound to that certificate, so they can't be replayed.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>Audit trail</h3><p>Every approval, removal and role change is recorded in the Control room.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block grid-bg" id="setup">
+    <div class="wrap">
+      <span class="label reveal">Set-up</span>
+      <h2 class="reveal">Running in an afternoon.</h2>
+      <div class="steps">
+        <div class="step reveal"><h3>Install the hub</h3><p>Unzip it on one always-on PC (for example <span class="mono">D:\Dexterity Connect Hub</span>) and double-click <span class="mono">Install-Hub.cmd</span>. It becomes a Windows service.</p></div>
+        <div class="step reveal"><h3>Install the app</h3><p>Run the installer on your PC and click <b>Request access</b>. The first person becomes the owner.</p></div>
+        <div class="step reveal"><h3>Approve colleagues</h3><p>As colleagues install, approve them in the Control room by matching their device code.</p></div>
+      </div>
+      <table class="keys reveal">
+        <tr><td><kbd>Ctrl</kbd><kbd>K</kbd></td><td>Jump to anyone, any Space, any command</td></tr>
+        <tr><td><kbd>Ctrl</kbd><kbd>1</kbd>–<kbd>4</kbd></td><td>Pulse, Direct, Spaces, Directory</td></tr>
+        <tr><td><kbd>↑</kbd></td><td>Edit your last message</td></tr>
+        <tr><td><kbd>Ctrl</kbd><kbd>B</kbd> / <kbd>Ctrl</kbd><kbd>I</kbd></td><td>Bold and italic in the Dock</td></tr>
+        <tr><td><kbd>Ctrl</kbd><kbd>,</kbd></td><td>Preferences</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <span class="label reveal">Questions</span>
+      <h2 class="reveal">Good to know</h2>
+      <div class="faq">
+        <details class="reveal"><summary>Does anything go over the internet?</summary><p>No. Messages, files and sign-ins stay between office PCs and the hub. The only optional internet use is the hub checking this page's releases for updates; offices that never connect can update by hand.</p></details>
+        <details class="reveal"><summary>What happens if the hub PC is switched off?</summary><p>Apps show a reconnecting state and keep everything readable. They reconnect on their own when the hub returns, and follow it if its IP address changes.</p></details>
+        <details class="reveal"><summary>Why does Windows SmartScreen warn on first install?</summary><p>The installers are not yet signed with a paid code-signing certificate. Click <b>More info → Run anyway</b>. You can check every download against <span class="mono">SHA256SUMS.txt</span> on the release.</p></details>
+        <details class="reveal"><summary>How do updates work?</summary><p>The app checks when it opens, every few hours and on demand. It downloads in the background from the hub's mirror (or GitHub), verifies the file and installs when you restart.</p></details>
+        <details class="reveal"><summary>Can phones use it outside the office?</summary><p>Phones connect while they are on the office Wi-Fi. The design keeps everything inside the office network on purpose.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final grid-bg">
+    <div class="wrap">
+      <img src="assets/icon.svg" alt="" width="88" height="88" style="margin: 0 auto 26px" />
+      <h2 class="reveal">Bring the office together.</h2>
+      <div class="cta"><a class="pill amber" href="#download">Download Dexterity Connect</a><a class="pill ghost" href="https://github.com/dexterity-admin/dexterity-connect/releases">All releases</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dexterity Design Services Pvt. Ltd. Internal software, all rights reserved.</span>
+    <span><a href="https://github.com/dexterity-admin/dexterity-connect/releases">Releases</a> · <a href="https://github.com/dexterity-admin/dexterity-connect/releases/latest">What's new</a> · Built with Electron, React, Capacitor and three.js (MIT)</span>
+  </div>
+</footer>
+
+<script>
+// ------------------------------------------------------------ newest release → download buttons
+(async () => {
+  const note = document.getElementById('channel-note');
+  try {
+    const res = await fetch('https://api.github.com/repos/dexterity-admin/dexterity-connect/releases?per_page=20');
+    const all = (await res.json()).filter((r) => !r.draft && r.assets && r.assets.length);
+    const rel = all.find((r) => !r.prerelease) || all[0];
+    if (!rel) { note.textContent = 'The first release is on its way. Check back shortly.'; return; }
+    const pick = { win: /Setup.*\.exe$/, 'mac-arm64': /mac-arm64\.dmg$/, 'mac-x64': /mac-x64\.dmg$/, apk: /\.apk$/, hub: /Hub.*\.zip$/ };
+    const mb = (n) => `${Math.round(n / 1e6)} MB`;
+    for (const [k, re] of Object.entries(pick)) {
+      const a = rel.assets.find((x) => re.test(x.name));
+      if (!a) continue;
+      document.querySelectorAll(`[data-asset="${k}"]`).forEach((el) => { el.href = a.browser_download_url; });
+      const meta = document.querySelector(`[data-meta="${k}"]`);
+      if (meta) meta.textContent = `${meta.textContent} · ${mb(a.size)}`;
+    }
+    const v = rel.tag_name.replace(/^v/, '');
+    note.innerHTML = `Version <b>${v}</b>${rel.prerelease ? ' · beta' : ''} · released ${new Date(rel.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} · <a href="${rel.html_url}">release notes and checksums</a>`;
+    document.getElementById('hero-meta').textContent = `Version ${v} · Windows 10 & 11 · macOS · Android · updates itself`;
+  } catch { note.textContent = 'See all releases on GitHub.'; }
+})();
+
+// ------------------------------------------------------------ nav + reveals
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), { passive: true });
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+
+<script type="module">
+// ------------------------------------------------------------ the cinematic: an office on a drafting table
+import * as THREE from 'three';
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canvas = document.getElementById('scene');
+let gl = null;
+try { gl = canvas.getContext('webgl2') || canvas.getContext('webgl'); } catch { gl = null; }
+if (reduce || !gl) {
+  document.documentElement.classList.add('still');
+} else {
+  start();
+}
+
+function start() {
+  const renderer = new THREE.WebGLRenderer({ canvas, context: gl, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x071315, 0.032);
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
+
+  const TEAL = 0x2a8c98, GLOW = 0x4fb3bf, AMBER = 0xf7af44;
+  scene.add(new THREE.HemisphereLight(0xbfe9ee, 0x071315, 0.9));
+  const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(6, 12, 8); scene.add(key);
+  const rim = new THREE.PointLight(GLOW, 30, 30); rim.position.set(-6, 4, -4); scene.add(rim);
+
+  // drafting-table grid
+  const grid = new THREE.GridHelper(80, 80, 0x1c4a50, 0x10292d);
+  grid.material.transparent = true; grid.material.opacity = 0.75;
+  scene.add(grid);
+  const fine = new THREE.GridHelper(80, 400, 0x0f2427, 0x0f2427);
+  fine.material.transparent = true; fine.material.opacity = 0.35; fine.position.y = -0.001;
+  scene.add(fine);
+
+  // the hub: our D-bubble mark, extruded
+  const s = 1 / 120;
+  const shape = new THREE.Shape();
+  const P = (x, y) => [(x - 280) * s, -(y - 278) * s];
+  shape.moveTo(...P(150, 120)); shape.lineTo(...P(274, 120));
+  shape.bezierCurveTo(...P(356, 120), ...P(410, 178), ...P(410, 256));
+  shape.bezierCurveTo(...P(410, 334), ...P(356, 392), ...P(274, 392));
+  shape.lineTo(...P(214, 392)); shape.lineTo(...P(150, 436)); shape.lineTo(...P(150, 120));
+  const hole = new THREE.Path();
+  hole.moveTo(...P(210, 180)); hole.lineTo(...P(210, 332)); hole.lineTo(...P(272, 332));
+  hole.bezierCurveTo(...P(319, 332), ...P(350, 300), ...P(350, 256));
+  hole.bezierCurveTo(...P(350, 212), ...P(319, 180), ...P(272, 180)); hole.lineTo(...P(210, 180));
+  shape.holes.push(hole);
+  const logoGeo = new THREE.ExtrudeGeometry(shape, { depth: 0.42, bevelEnabled: true, bevelThickness: 0.06, bevelSize: 0.05, bevelSegments: 4, curveSegments: 32 });
+  logoGeo.center();
+  const logo = new THREE.Mesh(logoGeo, new THREE.MeshStandardMaterial({ color: 0xf4fbfb, metalness: 0.2, roughness: 0.25 }));
+  const spark = new THREE.Mesh(new THREE.SphereGeometry(0.3, 48, 48), new THREE.MeshStandardMaterial({ color: AMBER, emissive: AMBER, emissiveIntensity: 1.6, roughness: 0.3 }));
+  spark.position.set(-0.07, 0.18, 0.05);
+  const hub = new THREE.Group(); hub.add(logo, spark);
+  const plinth = new THREE.Mesh(new THREE.CylinderGeometry(1.7, 1.9, 0.18, 64), new THREE.MeshStandardMaterial({ color: 0x0f2a2e, metalness: 0.6, roughness: 0.4, emissive: TEAL, emissiveIntensity: 0.08 }));
+  plinth.position.y = 0.09;
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.95, 0.02, 8, 120), new THREE.MeshBasicMaterial({ color: GLOW }));
+  ring.rotation.x = Math.PI / 2; ring.position.y = 0.2;
+  hub.position.y = 1.6;
+  scene.add(plinth, ring, hub);
+  const hubPoint = new THREE.Vector3(0, 0.6, 0);
+
+  // workstations around the hub
+  const pcMat = new THREE.MeshStandardMaterial({ color: 0x1a3236, metalness: 0.5, roughness: 0.45 });
+  const screenMat = () => new THREE.MeshStandardMaterial({ color: 0x0b1d20, emissive: GLOW, emissiveIntensity: 0.0 });
+  const nodes = [];
+  const N = 10;
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2 + 0.3 + Math.PI / N;
+    const r = 7 + (i % 2) * 2.2;
+    const g = new THREE.Group();
+    const scr = new THREE.Mesh(new THREE.BoxGeometry(1.25, 0.8, 0.06), screenMat());
+    scr.position.y = 1.05;
+    const stand = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.6, 0.08), pcMat); stand.position.y = 0.4;
+    const foot = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.05, 0.3), pcMat); foot.position.y = 0.03;
+    g.add(scr, stand, foot);
+    g.position.set(Math.cos(a) * r, 0, Math.sin(a) * r);
+    g.lookAt(0, 1, 0);
+    scene.add(g);
+    nodes.push({ group: g, screen: scr, pos: new THREE.Vector3(g.position.x, 0.6, g.position.z), kind: 'pc' });
+  }
+  // phones (appear later)
+  for (let i = 0; i < 4; i++) {
+    const a = (i / 4) * Math.PI * 2 + 1.1;
+    const g = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.8, 0.05), pcMat);
+    const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.36, 0.7), screenMat()); scr.position.z = 0.03;
+    g.add(body, scr);
+    g.position.set(Math.cos(a) * 4.4, 1.2, Math.sin(a) * 4.4);
+    g.lookAt(0, 1.2, 0);
+    g.scale.setScalar(0.001);
+    scene.add(g);
+    nodes.push({ group: g, screen: scr, pos: new THREE.Vector3(g.position.x, 1.0, g.position.z), kind: 'phone' });
+  }
+
+  // links: drawn in during "discovery"
+  const links = nodes.map((n) => {
+    const mid = n.pos.clone().multiplyScalar(0.5); mid.y += 1.2;
+    const curve = new THREE.QuadraticBezierCurve3(hubPoint, mid, n.pos);
+    const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(48));
+    geo.setDrawRange(0, 0);
+    const line = new THREE.Line(geo, new THREE.LineBasicMaterial({ color: GLOW, transparent: true, opacity: 0.85 }));
+    scene.add(line);
+    return { curve, geo, line, node: n };
+  });
+
+  // message pulses
+  const pulseGeo = new THREE.SphereGeometry(0.09, 16, 16);
+  const pulses = [];
+  for (let i = 0; i < 26; i++) {
+    const m = new THREE.Mesh(pulseGeo, new THREE.MeshBasicMaterial({ color: i % 4 ? AMBER : 0xffffff, transparent: true, opacity: 0 }));
+    scene.add(m);
+    pulses.push({ mesh: m, link: links[i % links.length], t: Math.random(), speed: 0.25 + Math.random() * 0.35, dir: i % 2 ? 1 : -1 });
+  }
+
+  // the internet: a cloud with a cable to the hub, cut in beat 3
+  const cloud = new THREE.Group();
+  const cloudMat = new THREE.MeshStandardMaterial({ color: 0x9fb9bc, transparent: true, opacity: 0.55, roughness: 1 });
+  [[0, 0, 0, 1.1], [1.1, -0.2, 0.2, 0.8], [-1.1, -0.25, 0, 0.75], [0.5, 0.45, -0.2, 0.7], [-0.5, 0.4, 0.2, 0.65]].forEach(([x, y, z, r]) => {
+    const b = new THREE.Mesh(new THREE.SphereGeometry(r, 32, 32), cloudMat); b.position.set(x, y, z); cloud.add(b);
+  });
+  cloud.position.set(0, 11, -6);
+  scene.add(cloud);
+  const cableTop = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 10, -5.6), new THREE.Vector3(0, 6.2, -2.8)]), new THREE.LineDashedMaterial({ color: 0x9fb9bc, dashSize: 0.2, gapSize: 0.12, transparent: true }));
+  const cableBottom = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 5.8, -2.5), new THREE.Vector3(0, 2.6, -0.2)]), new THREE.LineDashedMaterial({ color: 0x9fb9bc, dashSize: 0.2, gapSize: 0.12, transparent: true }));
+  cableTop.computeLineDistances(); cableBottom.computeLineDistances();
+  scene.add(cableTop, cableBottom);
+
+  // scroll → story progress (0..1); smooth it for a cinematic feel
+  const story = document.getElementById('story');
+  const beats = [...document.querySelectorAll('.beat')];
+  const marks = [...document.querySelectorAll('.progress i')];
+  let target = 0, p = 0;
+  const onScroll = () => {
+    const r = story.getBoundingClientRect();
+    target = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const resize = () => {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  };
+  addEventListener('resize', resize); resize();
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = (t) => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t);
+  const seg = (x, a, b) => ease((x - a) / (b - a));
+  // camera keyframes per beat: [progress, position, look-at]
+  const K = [
+    [0.00, [0, 1.8, 11], [0, 0.5, 0]],
+    [0.20, [0, 9, 15], [0, 0.6, 0]],
+    [0.42, [-11, 6, 10], [0, 0.6, 0]],
+    [0.64, [6, 11, 12], [0, 3, -2]],
+    [0.84, [9, 4.5, 6], [0, 1, 0]],
+    [1.00, [0, 3, 7.5], [0, 1.4, 0]],
+  ];
+  const camPos = new THREE.Vector3(), camLook = new THREE.Vector3();
+  function cameraAt(x) {
+    let i = 0;
+    while (i < K.length - 2 && x > K[i + 1][0]) i++;
+    const [p0, a0, l0] = K[i], [p1, a1, l1] = K[i + 1];
+    const t = ease((x - p0) / (p1 - p0));
+    camPos.set(lerp(a0[0], a1[0], t), lerp(a0[1], a1[1], t), lerp(a0[2], a1[2], t));
+    camLook.set(lerp(l0[0], l1[0], t), lerp(l0[1], l1[1], t), lerp(l0[2], l1[2], t));
+  }
+
+  const clock = new THREE.Clock();
+  let last = -1;
+  function frame() {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    const t = clock.elapsedTime;
+    p += (target - p) * Math.min(1, dt * 4);
+
+    cameraAt(p);
+    camera.position.lerp(camPos, 0.12);
+    camera.lookAt(camLook);
+
+    // hub idles: float and turn; it settles to face us at the end
+    hub.rotation.y = lerp(Math.sin(t * 0.4) * 0.5 + p * Math.PI * 2, 0, seg(p, 0.9, 1));
+    hub.position.y = 1.6 + Math.sin(t * 1.2) * 0.08;
+    spark.material.emissiveIntensity = 1.3 + Math.sin(t * 3) * 0.4;
+    ring.scale.setScalar(1 + Math.sin(t * 2) * 0.015);
+
+    // discovery: links draw out, screens light up
+    const disc = seg(p, 0.1, 0.32);
+    links.forEach((l, i) => {
+      const local = l.node.kind === 'phone' ? seg(p, 0.7, 0.84) : ease(disc * 1.4 - (i / N) * 0.4);
+      l.geo.setDrawRange(0, Math.floor(49 * local));
+      l.node.screen.material.emissiveIntensity = local * (0.7 + Math.sin(t * 2 + i) * 0.15);
+    });
+    nodes.filter((n) => n.kind === 'phone').forEach((n, i) => n.group.scale.setScalar(Math.max(0.001, ease(seg(p, 0.7, 0.82) * 1.3 - i * 0.08))));
+    // workstations rise into place as the hub finds them
+    nodes.filter((n) => n.kind === 'pc').forEach((n, i) => {
+      const k = ease(seg(p, 0.06, 0.24) * 1.6 - (i / N) * 0.6);
+      n.group.scale.setScalar(Math.max(0.001, k));
+    });
+
+    // live messages travel along the links
+    const live = seg(p, 0.3, 0.42);
+    pulses.forEach((q) => {
+      const ok = q.link.node.kind === 'phone' ? seg(p, 0.78, 0.86) : live;
+      q.t = (q.t + dt * q.speed * q.dir + 1) % 1;
+      q.mesh.position.copy(q.link.curve.getPoint(q.t));
+      q.mesh.material.opacity = ok * 0.95;
+    });
+
+    // the cable is cut; the cloud drifts away; messages keep flowing
+    const cut = seg(p, 0.55, 0.66);
+    cloud.position.y = 11 + cut * 6;
+    cloudMat.opacity = 0.55 * (1 - cut);
+    cableTop.position.y = cut * 3.5;
+    cableTop.material.opacity = 1 - cut;
+    cableBottom.position.y = -cut * 1.2;
+    cableBottom.material.opacity = 1 - cut * 0.9;
+    cableTop.visible = cableBottom.visible = p > 0.36;
+    cloud.visible = p > 0.36 && cut < 0.99;
+    const showCloud = seg(p, 0.36, 0.46);
+    cloud.scale.setScalar(Math.max(0.001, showCloud));
+
+    // captions
+    const centers = [0, 0.22, 0.42, 0.62, 0.84];
+    beats.forEach((b, i) => {
+      const d = Math.abs(p - centers[i]);
+      const o = i === 0 ? 1 - seg(p, 0.05, 0.14) : Math.max(0, 1 - d / 0.09);
+      b.style.opacity = o.toFixed(3);
+      b.style.transform = `translateY(${(1 - o) * 24}px)`;
+    });
+    const active = centers.reduce((bi, c, i) => (Math.abs(p - c) < Math.abs(p - centers[bi]) ? i : bi), 0);
+    if (active !== last) { marks.forEach((m, i) => m.classList.toggle('on', i === active)); last = active; }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+</script>
+</body>
+</html>
