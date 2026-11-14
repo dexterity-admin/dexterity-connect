@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dexterity Connect · Messages, files and calls for the office network</title>
-<meta name="description" content="Dexterity Connect is the internal messenger of Dexterity Design Services: Spaces, Direct conversations, files and calls that stay on the office network and work without internet." />
+<title>Dexterity Connect · Messages, files and calls for the office, and from anywhere</title>
+<meta name="description" content="Dexterity Connect is the internal messenger of Dexterity Design Services: Spaces, Direct conversations, files and calls that run on the office network, and reach you at home or on mobile data through an end-to-end encrypted gateway." />
 <meta property="og:title" content="Dexterity Connect" />
 <meta property="og:description" content="Your office, connected. No internet required." />
 <meta property="og:image" content="assets/icon-512.png" />
@@ -107,12 +107,16 @@ section.block { padding: 120px 0; position: relative; }
 .card { padding: 24px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
 .card h3 { font-size: 19px; margin: 14px 0 8px; }
 .card p { color: var(--ink-2); font-size: 15.5px; margin: 0; }
+.card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; column-gap: 20px; align-items: center; background: linear-gradient(120deg, var(--panel), color-mix(in srgb, var(--panel) 80%, #e8a23a 20%)); }
+.card.wide .ico { grid-row: span 2; }
+.card.wide h3 { margin: 0 0 6px; }
+@media (max-width: 560px) { .card.wide { grid-template-columns: 1fr; } .card.wide .ico { grid-row: auto; } .card.wide h3 { margin-top: 14px; } }
 .card .ico { width: 40px; height: 40px; border-radius: 30%; display: grid; place-items: center; background: rgba(79,179,191,.12); color: var(--teal-2); }
 .tool { position: relative; overflow: hidden; }
 .tool .name { font: 600 13px var(--mono); color: var(--amber); letter-spacing: .06em; text-transform: uppercase; }
 .tool::after { content: ''; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; border: 1px dashed rgba(79,179,191,.25); }
 
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; counter-reset: s; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; counter-reset: s; }
 .step { padding: 28px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); counter-increment: s; }
 .step::before { content: counter(s, decimal-leading-zero); display: block; font: 600 40px var(--display); color: var(--teal); margin-bottom: 8px; }
 .step p { color: var(--ink-2); margin: 8px 0 0; font-size: 15.5px; }
@@ -179,14 +183,14 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <div class="beat hero" data-beat="0">
         <span class="label">Internal tool · Dexterity Design Services</span>
         <h1>Your office,<br />connected.</h1>
-        <p>Messages, files and calls that never leave the building. No internet required, no accounts to remember.</p>
+        <p>Messages, files and calls that live on the office's own hub. Fast on the office network, and with you at home or on mobile data. No accounts to remember.</p>
         <div class="cta"><a class="pill amber" href="#download">Download for Windows</a><a class="pill ghost" href="#features">See what it does</a></div>
         <div class="meta" id="hero-meta">Windows 10 &amp; 11 · macOS · Android · updates itself</div>
       </div>
       <div class="beat" data-beat="1"><span class="label">01 · Discovery</span><h2>It finds everyone.</h2><p>Every PC finds the office hub on its own and signs in with Windows. An admin approves each new device once, matching an 8-character code.</p></div>
       <div class="beat" data-beat="2"><span class="label">02 · Live</span><h2>Instant, across the floor.</h2><p>Spaces, Direct conversations, side-tracks and mentions arrive in milliseconds over the office network.</p></div>
-      <div class="beat" data-beat="3"><span class="label">03 · Offline-first</span><h2>Cut the cable.<br />Keep talking.</h2><p>Nothing depends on the internet. The hub keeps history, mirrors updates and approves devices, all inside the office.</p></div>
-      <div class="beat" data-beat="4"><span class="label">04 · Everywhere</span><h2>In your pocket, too.</h2><p>Android phones on the office Wi-Fi join the same conversations, with the same security.</p></div>
+      <div class="beat" data-beat="3"><span class="label">03 · Offline-first</span><h2>Cut the cable.<br />Keep talking.</h2><p>In the office nothing depends on the internet. The hub keeps history, mirrors updates and approves devices, all on the premises.</p></div>
+      <div class="beat" data-beat="4"><span class="label">04 · Everywhere</span><h2>In your pocket, too.</h2><p>Android phones and home laptops join the same conversations on the office Wi-Fi, at home or on mobile data, encrypted all the way to the office hub.</p></div>
       <div class="scroll-hint">Scroll</div>
       <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -266,7 +270,8 @@ footer a { color: var(--ink-2); text-decoration: none; }
       </div>
 
       <div class="cards">
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 6.5h12v11h-12zM15.5 10.5l5-3v9l-5-3"/></svg></div><h3>Rooms</h3><p>Voice and video calls for up to eight people with screen sharing and recording. The media goes PC to PC over the LAN, so calls are crisp and nothing leaves the office.</p></div>
+        <div class="card wide reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM4 12h16M12 4c2.2 2.2 3.3 4.9 3.3 8s-1.1 5.8-3.3 8c-2.2-2.2-3.3-4.9-3.3-8S9.8 6.2 12 4Z"/></svg></div><h3>From home or the road</h3><p>Use every feature on your laptop or phone from home, on leave or on mobile data. Your device talks to the office hub through an encrypted channel; the office opens no ports.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 6.5h12v11h-12zM15.5 10.5l5-3v9l-5-3"/></svg></div><h3>Rooms</h3><p>Voice and video calls for up to eight people with screen sharing and recording. In the office the media goes PC to PC over the LAN; from home it is encrypted end to end with WebRTC.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5 12 19.5a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7L9.7 17.2a1.7 1.7 0 0 1-2.4-2.4L15 7"/></svg></div><h3>Files, voice and video</h3><p>Drag, drop or paste drawings, photos and sheets up to 1 GB. Voice notes, video messages and screen recordings play right in the conversation.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Zm4.7-1.8L20 20"/></svg></div><h3>Search everything</h3><p>Find messages and files by who, where and when, including the text in photos of nameplates and markups, and jump straight to the message.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-12v4.5l3 2"/></svg></div><h3>Presence that means something</h3><p>Available, Busy, Do not disturb or Invisible. You show as away automatically when your PC is idle or locked, and as in a Room during calls.</p></div>
@@ -308,11 +313,11 @@ footer a { color: var(--ink-2); text-decoration: none; }
   <section class="block" id="security">
     <div class="wrap">
       <span class="label reveal">Security</span>
-      <h2 class="reveal">Nothing leaves the office. Nobody joins uninvited.</h2>
+      <h2 class="reveal">Your data stays yours. Nobody joins uninvited.</h2>
       <div class="cards">
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10.5h12V20H6zM8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div><h3>Device keys</h3><p>Every PC and phone has its own Ed25519 key, sealed by Windows. Signing in never involves a password.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.9 7 9 4.1-1.1 7-4.7 7-9V6zM9 12l2.2 2.2L15.5 10"/></svg></div><h3>Approved devices only</h3><p>An admin approves each new device by matching a code shown on both screens. Lost laptops are removed in one click.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4z"/></svg></div><h3>Pinned encryption</h3><p>All traffic is TLS, pinned to the hub's own certificate. Sign-in proofs are bound to that certificate, so they can't be replayed.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4z"/></svg></div><h3>Pinned encryption</h3><p>In the office all traffic is TLS, pinned to the hub's own certificate. From outside, each device runs its own X25519 and AES-256-GCM channel to the hub, checked against the same certificate, so the relay in between sees only scrambled data.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>Private Direct messages</h3><p>Direct messages are end-to-end encrypted between devices: the hub stores only sealed envelopes. Every admin action is in the audit log.</p></div>
       </div>
     </div>
@@ -326,6 +331,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <div class="step reveal"><h3>Install the hub</h3><p>Unzip it on one always-on PC (for example <span class="mono">D:\Dexterity Connect Hub</span>) and double-click <span class="mono">Install-Hub.cmd</span>. It becomes a Windows service.</p></div>
         <div class="step reveal"><h3>Install the app</h3><p>Run the installer on your PC and click <b>Request access</b>. The first person becomes the owner.</p></div>
         <div class="step reveal"><h3>Approve colleagues</h3><p>As colleagues install, approve them in the Control room by matching their device code.</p></div>
+        <div class="step reveal"><h3>Open it to home (optional)</h3><p>Deploy the gateway to your free Cloudflare account from GitHub Actions, paste its address in <b>Control room → Outside the office</b> and switch it on.</p></div>
       </div>
       <table class="keys reveal">
         <tr><td><kbd>Ctrl</kbd><kbd>K</kbd></td><td>Jump to anyone, any Space, any command</td></tr>
@@ -342,11 +348,11 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <span class="label reveal">Questions</span>
       <h2 class="reveal">Good to know</h2>
       <div class="faq">
-        <details class="reveal"><summary>Does anything go over the internet?</summary><p>No. Messages, files and sign-ins stay between office PCs and the hub. The only optional internet use is the hub checking this page's releases for updates; offices that never connect can update by hand.</p></details>
+        <details class="reveal"><summary>Does anything go over the internet?</summary><p>In the office, no: messages, files and sign-ins stay between office PCs and the hub. If the office turns on access from outside, devices away from the office reach the hub through a small relay on the office's own Cloudflare account. Each device has its own encrypted channel to the hub, checked against the hub's certificate, so the relay only ever sees scrambled data. The office opens no ports.</p></details>
         <details class="reveal"><summary>What happens if the hub PC is switched off?</summary><p>Apps show a reconnecting state and keep everything readable. They reconnect on their own when the hub returns, and follow it if its IP address changes.</p></details>
         <details class="reveal"><summary>Why does Windows SmartScreen warn on first install?</summary><p>The installers are not yet signed with a paid code-signing certificate. Click <b>More info → Run anyway</b>. You can check every download against <span class="mono">SHA256SUMS.txt</span> on the release.</p></details>
         <details class="reveal"><summary>How do updates work?</summary><p>The app checks when it opens, every few hours and on demand. It downloads in the background from the hub's mirror (or GitHub), verifies the file and installs when you restart.</p></details>
-        <details class="reveal"><summary>Can phones use it outside the office?</summary><p>Phones connect while they are on the office Wi-Fi. The design keeps everything inside the office network on purpose.</p></details>
+        <details class="reveal"><summary>Can I use it at home or on mobile data?</summary><p>Yes, once an administrator turns on access from outside the office. Phones and laptops that have joined in the office simply keep working outside; new ones join with a QR code or setup code and are approved as usual. They move back to the office network on their own.</p></details>
       </div>
     </div>
   </section>
