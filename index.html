@@ -63,6 +63,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -.02
 .beat.hero .meta { margin-top: 14px; font: 13px var(--mono); color: var(--ink-3); }
 .scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); font: 12px var(--mono); color: var(--ink-3); letter-spacing: .12em; text-transform: uppercase; }
 .scroll-hint::after { content: ''; display: block; width: 1px; height: 34px; margin: 10px auto 0; background: linear-gradient(var(--teal-2), transparent); animation: drip 1.8s infinite; }
+@media (max-height: 940px) { .scroll-hint { display: none; } } /* the hero copy reaches the bottom on shorter screens; the side progress marks already say "scroll" */
 @keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 60% { transform: scaleY(1); transform-origin: top; } 61% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 .progress { position: absolute; right: 26px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px; }
 .progress i { width: 3px; height: 22px; border-radius: 2px; background: rgba(232,242,243,.14); transition: background .3s, height .3s; }
@@ -162,6 +163,13 @@ footer a { color: var(--ink-2); text-decoration: none; }
   section.block { padding: 84px 0; }
 }
 @media (max-width: 520px) { .steps, .stats { grid-template-columns: 1fr; } }
+/* ---------------------------------------------------------- launch film */
+.film-frame { position: relative; margin-top: 40px; border-radius: 20px; overflow: hidden; background: var(--deep); border: 1px solid var(--line);
+  box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(79,179,191,.08), 0 0 120px -30px rgba(255,143,31,.35); aspect-ratio: 16 / 9; }
+.film-frame video { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--night); }
+.film-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 16px; color: var(--ink-2); font-size: 14px; }
+.film-meta a { color: var(--ink-2); }
+@media (max-width: 560px) { .beat.hero .cta .see { display: none; } }
 </style>
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
 </head>
@@ -170,6 +178,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/icon.svg" alt="" />Dexterity Connect</a>
     <nav>
+      <a href="#film">Film</a>
       <a href="#features">Features</a>
       <a href="#ecosystem">Ecosystem</a>
       <a href="#security">Security</a>
@@ -189,7 +198,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <span class="label">Internal tool · Dexterity Design Services</span>
         <h1>Your office,<br />connected.</h1>
         <p>Messages, files and calls that live on the office's own hub. Fast on the office network, and with you at home or on mobile data. No accounts to remember.</p>
-        <div class="cta"><a class="pill amber" href="#download">Download for Windows</a><a class="pill ghost" href="#features">See what it does</a></div>
+        <div class="cta"><a class="pill amber" href="#download">Download for Windows</a><a class="pill ghost see" href="#features">See what it does</a><a class="pill ghost" href="#film">▶ Watch the film</a></div>
         <div class="meta" id="hero-meta">Windows 10 &amp; 11 · macOS · Android · updates itself</div>
       </div>
       <div class="beat" data-beat="1"><span class="label">01 · Discovery</span><h2>It finds everyone.</h2><p>Every PC finds the office hub on its own and signs in with Windows. An admin approves each new colleague's device by matching an 8-character code.</p></div>
@@ -200,6 +209,21 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
+
+  <section class="block" id="film">
+    <div class="wrap">
+      <span class="label reveal">Launch film</span>
+      <h2 class="reveal">Every feature, in 75 seconds.</h2>
+      <p class="lede reveal">Talk, meet, Nib, notices, the office floor, bots and more, from a morning message to the evening register. Every screen in it is the real app.</p>
+      <div class="film-frame reveal">
+        <video id="launch-film" controls playsinline preload="none" poster="assets/launch-film-poster.webp" aria-label="Dexterity Connect launch film, 75 seconds">
+          <source src="assets/launch-film-720.mp4" type="video/mp4" media="(max-width: 900px)" />
+          <source src="assets/launch-film.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="film-meta reveal"><span>1:15 · HD · with sound</span><a href="assets/launch-film.mp4" download>Download the film (MP4, 20 MB)</a></div>
+    </div>
+  </section>
 
   <section class="block grid-bg" id="download">
     <div class="wrap">
