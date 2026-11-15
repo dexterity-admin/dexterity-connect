@@ -263,7 +263,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <div class="copy">
           <span class="label">Light &amp; dark</span>
           <h3>At home on Windows 11, by day and by night.</h3>
-          <p>Mica surfaces, the system's light or dark mode, and a Ctrl+K palette that jumps to any person, Space or command.</p>
+          <p>Mica surfaces, the system's light or dark mode, and GO TO (Ctrl+G), which jumps to any person, Space or command.</p>
           <ul class="ticks"><li>Pulse shows only what needs you</li><li>Native notifications that open the right conversation</li><li>Unread badge on the taskbar</li></ul>
         </div>
         <div class="shot"><img src="assets/screen-space-dark.png" alt="Dexterity Connect in dark mode" loading="lazy" /></div>
@@ -278,26 +278,65 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <div class="phone-shot"><img src="assets/screen-phone.png" alt="Dexterity Connect on a phone" loading="lazy" /></div>
       </div>
 
+      <div class="feature reveal">
+        <div class="copy">
+          <span class="label">Rooms &amp; meetings</span>
+          <h3>Meetings drawn like a sheet, not a video wall.</h3>
+          <p>Every seat has a grid reference, the host's controls sit in a title block, and leaving is an amber door, not a red handset. Record with chapters for who spoke when, split into breakout rooms, or run a webinar for clients.</p>
+          <ul class="ticks"><li>Lobby, waiting room and host controls</li><li>Background blur and noise suppression on the PC</li><li>Guests join from a browser, no install</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-room.png" alt="A Room with three colleagues and the host's controls" loading="lazy" /></div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="copy">
+          <span class="label">The office drawing</span>
+          <h3>An org chart you can walk through.</h3>
+          <p>The office laid out as an engineering drawing: departments as areas, reporting lines as routed runs, everyone as a tagged plate that shows who is in. Pan and zoom like a CAD viewer, ask how you connect to someone, or switch to the floor plan and walk to their desk.</p>
+          <ul class="ticks"><li>New joiners, birthdays and work anniversaries marked on the sheet</li><li>See who works together across Spaces</li><li>Replay how the office grew</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-office-drawing.png" alt="The office drawing showing the route between two colleagues" loading="lazy" /></div>
+      </div>
+
+      <div class="feature reveal">
+        <div class="copy">
+          <span class="label">Bot maker</span>
+          <h3>Make your own bot in a few minutes.</h3>
+          <p>Plot requests, leave notes, RFI logs, site visits: pick a template or describe it in words, give it a mark, a voice and office hours, and try it beside the editor before anyone sees it. Keep it to yourself, share it with a Space, or ask for it office-wide.</p>
+          <ul class="ticks"><li>No code; the JSON is there if you want it</li><li>Remembers answers ("Same site as last time?")</li><li>Shows where people stop, so you can fix the question</li></ul>
+        </div>
+        <div class="shot"><img src="assets/screen-bot-maker.png" alt="The bot maker with a live test run" loading="lazy" /></div>
+      </div>
+
+      <div class="feature flip reveal">
+        <div class="copy">
+          <span class="label">Drawings</span>
+          <h3>Open an A0 sheet right in the conversation.</h3>
+          <p>PDFs show their first page in the message and open in a viewer built for drawings: fit, zoom to 800%, search the text, rotate, and stay quick on large sheets. Files sent in an encrypted Direct conversation are encrypted on your PC before they leave it.</p>
+        </div>
+        <div class="shot"><img src="assets/screen-pdf.png" alt="A GA drawing open in the PDF viewer" loading="lazy" /></div>
+      </div>
+
       <div class="cards">
         <div class="card wide reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM4 12h16M12 4c2.2 2.2 3.3 4.9 3.3 8s-1.1 5.8-3.3 8c-2.2-2.2-3.3-4.9-3.3-8S9.8 6.2 12 4Z"/></svg></div><h3>From home or the road</h3><p>Use every feature on your laptop or phone from home, on leave or on mobile data. Your device talks to the office hub through an encrypted channel; the office opens no ports.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 6.5h12v11h-12zM15.5 10.5l5-3v9l-5-3"/></svg></div><h3>Rooms</h3><p>Voice and video calls for up to eight people with screen sharing and recording. In the office the media goes PC to PC over the LAN; from home it is encrypted end to end with WebRTC.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 6.5h12v11h-12zM15.5 10.5l5-3v9l-5-3"/></svg></div><h3>Rooms and meetings</h3><p>Voice and video with screen sharing, recording with chapters, a lobby, breakout rooms and webinars. Up to eight people talk PC to PC; larger Rooms run through the office hub's relay. Clients can join from a browser.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5 12 19.5a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7L9.7 17.2a1.7 1.7 0 0 1-2.4-2.4L15 7"/></svg></div><h3>Files, voice and video</h3><p>Drag, drop or paste drawings, photos and sheets up to 1 GB. Voice notes, video messages and screen recordings play right in the conversation.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Zm4.7-1.8L20 20"/></svg></div><h3>Search everything</h3><p>Find messages and files by who, where and when, including the text in photos of nameplates and markups, and jump straight to the message.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Zm4.7-1.8L20 20"/></svg></div><h3>Search everything</h3><p>Find messages and files by who, where and when, including the text in photos of nameplates and markups. End-to-end encrypted Direct messages are searched on your own PC, never on the hub.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-12v4.5l3 2"/></svg></div><h3>Presence that means something</h3><p>Available, Busy, Do not disturb or Invisible. You show as away automatically when your PC is idle or locked, and as in a Room during calls.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5h16M6 19.5V9.5l6-4 6 4v10M10 19.5v-5h4v5"/></svg></div><h3>Your Desk</h3><p>Reminders for you or a colleague, saved messages, messages scheduled to send later, personal notes and your timesheet, in one place.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4"/></svg></div><h3>Calendar and rooms</h3><p>Meetings with invitations and replies, repeating events, conference rooms that cannot be double-booked, and one click to join the call.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM5.5 19.5a6.5 6.5 0 0 1 13 0"/></svg></div><h3>Directory and org chart</h3><p>Departments, designations, reporting lines, extensions and seats, with an org chart and a CSV import from Excel or Dexterity Sheets.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-3.5-8 2.5 2.5 4.5-5"/></svg></div><h3>Check in from anywhere</h3><p>Check in from the office, home, a site or a client's, with breaks, a live who's-working view and attendance reports for managers.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM5.5 19.5a6.5 6.5 0 0 1 13 0"/></svg></div><h3>Directory</h3><p>Departments, designations, reporting lines, extensions and seats, with a CSV import from Excel or Dexterity Sheets, and a register of everyone in the office.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-3.5-8 2.5 2.5 4.5-5"/></svg></div><h3>A day log, from anywhere</h3><p>Start your day at the office, at home, on site or at a client's, with breaks, a live who's-working view and attendance reports for managers.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h3l2-5 4 10 2-5h5"/></svg></div><h3>Works with the hub off</h3><p>If the hub PC is down, PCs find each other and pass encrypted Direct messages straight across; the history catches up when it is back.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.9 7 9 4.1-1.1 7-4.7 7-9V6z"/></svg></div><h3>Guests and compliance</h3><p>Invite clients to chosen Spaces for a set time. Retention, legal holds, exports, edit windows, upload limits and a usage report for admins.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19.5V11M10 19.5V5M15 19.5v-6M20 19.5V8"/></svg></div><h3>Polls, forms and whiteboards</h3><p>Ask the room with a poll or a form, keep shared notes per conversation, and sketch on a live whiteboard that posts as an image.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7.5h16v10H4zM7 10.5h.01M10 10.5h.01M13 10.5h.01M16 10.5h.01M8 14.5h8"/></svg></div><h3>Made for the keyboard</h3><p>Ctrl+K for anything, Ctrl+Shift+F to search, Alt+arrows between conversations, plus compact density, text size and quiet notification sounds.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7.5h16v10H4zM7 10.5h.01M10 10.5h.01M13 10.5h.01M16 10.5h.01M8 14.5h8"/></svg></div><h3>Made for the keyboard</h3><p>Ctrl+G to go anywhere, Ctrl+Shift+F to search, Alt+arrows between conversations, plus compact density, text size and quiet notification sounds.</p></div>
       </div>
 
       <div class="stats reveal">
         <div><b>0</b><span>connections to the internet needed</span></div>
         <div><b>&lt;50 ms</b><span>message delivery across the office</span></div>
-        <div><b>~150 KB</b><span>compressed interface code, so it opens instantly</span></div>
+        <div><b>0.6 s</b><span>from click to a working window, with 60,000 messages in the office</span></div>
         <div><b>4</b><span>platforms from one codebase</span></div>
       </div>
     </div>
@@ -324,10 +363,10 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <span class="label reveal">Security</span>
       <h2 class="reveal">Your data stays yours. Nobody joins uninvited.</h2>
       <div class="cards">
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10.5h12V20H6zM8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div><h3>Device keys</h3><p>Every PC and phone has its own Ed25519 key, sealed by Windows. Signing in never involves a password.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10.5h12V20H6zM8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg></div><h3>Device keys</h3><p>Every PC and phone has its own Ed25519 key, sealed by Windows, and by the Android Keystore on phones. Signing in never involves a password.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.9 7 9 4.1-1.1 7-4.7 7-9V6zM9 12l2.2 2.2L15.5 10"/></svg></div><h3>Approved devices only</h3><p>An admin approves each new device by matching a code shown on both screens. Lost laptops are removed in one click.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4z"/></svg></div><h3>Pinned encryption</h3><p>In the office all traffic is TLS, pinned to the hub's own certificate. From outside, each device runs its own X25519 and AES-256-GCM channel to the hub, checked against the same certificate, so the relay in between sees only scrambled data.</p></div>
-        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>Private Direct messages</h3><p>Direct messages are end-to-end encrypted between devices: the hub stores only sealed envelopes. Every admin action is in the audit log.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></div><h3>Private Direct messages</h3><p>Direct messages and their files are end-to-end encrypted between devices: the hub stores only sealed envelopes and ciphertext. Every admin action is in the audit log.</p></div>
       </div>
     </div>
   </section>
@@ -340,11 +379,11 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <div class="step reveal"><h3>Install the hub</h3><p>Unzip it on one always-on PC (for example <span class="mono">D:\Dexterity Connect Hub</span>) and double-click <span class="mono">Install-Hub.cmd</span>. It becomes a Windows service.</p></div>
         <div class="step reveal"><h3>Install the app</h3><p>Run the installer on your PC and click <b>Request access</b>. The first person becomes the owner.</p></div>
         <div class="step reveal"><h3>Approve colleagues</h3><p>As colleagues install, approve them in the Control room by matching their device code.</p></div>
-        <div class="step reveal"><h3>Open it to home (optional)</h3><p>Deploy the gateway to your free Cloudflare account from GitHub Actions, paste its address in <b>Control room → Outside the office</b> and switch it on.</p></div>
+        <div class="step reveal"><h3>Open it to home (optional)</h3><p>Deploy the gateway to your free Cloudflare account with <span class="mono">Deploy-Gateway.cmd</span>, paste its address in <b>Control room → Outside the office</b> and switch it on.</p></div>
       </div>
       <table class="keys reveal">
-        <tr><td><kbd>Ctrl</kbd><kbd>K</kbd></td><td>Jump to anyone, any Space, any command</td></tr>
-        <tr><td><kbd>Ctrl</kbd><kbd>1</kbd>–<kbd>4</kbd></td><td>Pulse, Direct, Spaces, Directory</td></tr>
+        <tr><td><kbd>Ctrl</kbd><kbd>G</kbd></td><td>Go to anyone, any Space, any command</td></tr>
+        <tr><td><kbd>Ctrl</kbd><kbd>1</kbd>–<kbd>7</kbd></td><td>Pulse, Direct, Spaces, Desk, Calendar, Directory, Meet</td></tr>
         <tr><td><kbd>↑</kbd></td><td>Edit your last message</td></tr>
         <tr><td><kbd>Ctrl</kbd><kbd>B</kbd> / <kbd>Ctrl</kbd><kbd>I</kbd></td><td>Bold and italic in the Dock</td></tr>
         <tr><td><kbd>Ctrl</kbd><kbd>,</kbd></td><td>Preferences</td></tr>
