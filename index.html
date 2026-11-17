@@ -163,6 +163,20 @@ footer a { color: var(--ink-2); text-decoration: none; }
   section.block { padding: 84px 0; }
 }
 @media (max-width: 520px) { .steps, .stats { grid-template-columns: 1fr; } }
+/* ---------------------------------------------------------- start here */
+.start { margin-top: 40px; padding: 26px; border-radius: 20px; background: linear-gradient(150deg, rgba(255,143,31,.10), rgba(79,179,191,.06)); border: 1px solid rgba(255,143,31,.35); }
+.start-head h3 { font-size: 24px; margin-top: 6px; }
+.start-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.start-dl { display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr auto; gap: 10px 16px; padding: 20px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: transform .25s var(--ease), border-color .25s; }
+.start-dl:hover { transform: translateY(-3px); border-color: rgba(255,143,31,.6); }
+.start-dl .n { grid-row: 1 / 3; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 700 18px var(--mono); color: #1b0f02; background: #FF8F1F; }
+.start-dl .t { display: grid; gap: 6px; }
+.start-dl .t > b { font-size: 18px; }
+.start-dl .t span { color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+.start-dl code { font: 13px var(--mono); color: var(--ink); }
+.start-dl .go { font-weight: 600; color: #FFB766; }
+.start-note { margin-top: 14px; color: var(--ink-3); font-size: 14px; }
+@media (max-width: 760px) { .start-steps { grid-template-columns: 1fr; } .start { padding: 18px; } }
 /* ---------------------------------------------------------- launch film */
 .film-frame { position: relative; margin-top: 40px; border-radius: 20px; overflow: hidden; background: var(--deep); border: 1px solid var(--line);
   box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(79,179,191,.08), 0 0 120px -30px rgba(255,143,31,.35); aspect-ratio: 16 / 9; }
@@ -230,20 +244,36 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <span class="label reveal">Download</span>
       <h2 class="reveal">Install once. It keeps itself up to date.</h2>
       <p class="lede reveal">Every installer is checked with SHA-256, installs per user without admin rights, and updates from the office hub, even on PCs without internet.</p>
+      <div class="start reveal" id="start">
+        <div class="start-head"><span class="label">Start here</span><h3>Two downloads get the office running</h3></div>
+        <div class="start-steps">
+          <a class="start-dl" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-win-x64.zip">
+            <span class="n">1</span>
+            <span class="t"><b>Office hub (server)</b><span>For the one PC that stays on. Extract the zip, then right-click <code>Install-Hub.cmd</code> → <b>Run as administrator</b>.</span></span>
+            <span class="go">Download hub · .zip</span>
+          </a>
+          <a class="start-dl" data-asset="win" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-Setup.exe">
+            <span class="n">2</span>
+            <span class="t"><b>Dexterity Connect (everyone)</b><span>For every Windows PC. Install, open, pick the office hub. The first person to join becomes the owner and approves the rest.</span></span>
+            <span class="go">Download app · .exe</span>
+          </a>
+        </div>
+        <p class="start-note">Windows may say “Windows protected your PC” because the installers are not code-signed yet: choose <b>More info → Run anyway</b>. Both links always get the newest version.</p>
+      </div>
       <div class="downloads">
-        <a class="dl primary reveal" data-asset="win" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+        <a class="dl primary reveal" data-asset="win" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-Setup.exe">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.5v7H3zm8.5-1.1L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>Windows</span>
           <span class="meta" data-meta="win">Windows 10 and 11 · 64-bit</span><span class="go">Download installer →</span>
         </a>
-        <a class="dl reveal" data-asset="mac-arm64" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+        <a class="dl reveal" data-asset="mac-arm64" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-mac-arm64.dmg">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8C7 7.3 5.5 8.2 4.7 9.6c-1.7 2.9-.4 7.2 1.2 9.6.8 1.1 1.7 2.4 3 2.4 1.2-.1 1.6-.8 3.1-.8s1.8.8 3.1.8c1.3 0 2.1-1.2 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.8-4zM14.2 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>macOS</span>
           <span class="meta" data-meta="mac-arm64">Apple silicon (M1 and newer)</span><span class="go">Download →</span>
         </a>
-        <a class="dl reveal" data-asset="apk" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+        <a class="dl reveal" data-asset="apk" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect.apk">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9h11v8a1.5 1.5 0 0 1-1.5 1.5h-1V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5H8A1.5 1.5 0 0 1 6.5 17zM4 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0zm2.6-4.9-.9-1.3a.3.3 0 0 1 .5-.3l.9 1.4a5 5 0 0 1 3.8 0l.9-1.4a.3.3 0 0 1 .5.3l-.9 1.3"/></svg>Android</span>
           <span class="meta" data-meta="apk">Android 7 and newer · anywhere</span><span class="go">Download APK →</span>
         </a>
-        <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases">
+        <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-win-x64.zip">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4zM7.5 7.5h.01M7.5 16.5h.01"/></svg>Office hub</span>
           <span class="meta" data-meta="hub">Windows service for one always-on PC</span><span class="go">Download hub →</span>
         </a>
@@ -252,7 +282,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <img src="assets/get-qr.svg" alt="QR code that opens the Android download page" width="132" height="132" />
         <div><h3>On your phone</h3><p>Point the camera here to download the Android app. To sign in as yourself, add the phone from your office PC: <b>Preferences → Your devices → Add my phone</b>. That QR code installs and pairs it in one go, with no approval needed.</p></div>
       </div>
-      <p class="channel-note">Older Intel Mac? <a data-asset="mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases">Download the Intel version</a>.</p>
+      <p class="channel-note">Older Intel Mac? <a data-asset="mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-mac-x64.dmg">Download the Intel version</a>.</p>
       <p class="channel-note" id="channel-note">Looking up the newest release…</p>
     </div>
   </section>
