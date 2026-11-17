@@ -1,0 +1,350 @@
+name: release
+
+# Builds Dexterity Connect from its private source repository and publishes the installers here.
+# This repository is public, so GitHub Actions minutes for it are free on the free plan.
+#
+# Start a build in either of two ways:
+#   - change build-request.json on the gh-pages branch (source branch, channel, skipTests): a push
+#     that changes it starts a build;
+#   - Actions -> release -> Run workflow, once this file is also on the default branch.
+#
+# Needs one repository secret, SOURCE_TOKEN: a fine-grained personal access token with read-only
+# "Contents" access to vikramdex-ops/Dex-Chat. Publishing here uses this repository's own token.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Source branch in Dex-Chat
+        default: claude/epic-fermi-h7zdk1
+      channel:
+        description: "stable: everyone's apps update; beta: only those who opted in"
+        type: choice
+        options: [stable, beta]
+        default: stable
+      skip_tests:
+        description: Skip the typecheck and unit tests
+        type: boolean
+        default: false
+  push:
+    branches: [gh-pages]
+    paths: [build-request.json]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  SOURCE_REPO: vikramdex-ops/Dex-Chat
+  PUBLIC_REPO: ${{ github.repository }}
+
+jobs:
+  prepare:
+    name: prepare release
+    runs-on: ubuntu-latest
+    outputs:
+      ref: ${{ steps.v.outputs.ref }}
+      channel: ${{ steps.v.outputs.channel }}
+      version: ${{ steps.ver.outputs.version }}
+      code: ${{ steps.v.outputs.code }}
+      skip_tests: ${{ steps.v.outputs.skip_tests }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      HAS_SOURCE_TOKEN: ${{ secrets.SOURCE_TOKEN != '' }}
+    steps:
+      - name: Check the source token
+        run: |
+          if [ "$HAS_SOURCE_TOKEN" != "true" ]; then
+            echo "::error::The SOURCE_TOKEN secret is missing. Add it in Settings -> Secrets and variables -> Actions (a fine-grained token with read-only Contents access to $SOURCE_REPO)."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          path: ctl
+      - id: v
+        name: Source, channel and version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            REF="${{ inputs.ref }}"; CHANNEL="${{ inputs.channel }}"; SKIP="${{ inputs.skip_tests }}"
+          else
+            REF=$(node -p "require('./ctl/build-request.json').ref")
+            CHANNEL=$(node -p "require('./ctl/build-request.json').channel || 'stable'")
+            SKIP=$(node -p "!!require('./ctl/build-request.json').skipTests")
+          fi
+          case "$CHANNEL" in stable|beta) ;; *) echo "::error::channel must be stable or beta"; exit 1 ;; esac
+          STAMP=$(TZ=Asia/Kolkata date +%y%m%d%H)
+          echo "ref=$REF" >> "$GITHUB_OUTPUT"
+          echo "channel=$CHANNEL" >> "$GITHUB_OUTPUT"
+          echo "skip_tests=$SKIP" >> "$GITHUB_OUTPUT"
+          echo "stamp=$STAMP" >> "$GITHUB_OUTPUT"
+          echo "code=$STAMP" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ steps.v.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+          path: src
+          fetch-depth: 30
+      - id: ver
+        name: Version
+        run: |
+          BASE=$(node -p "require('./src/apps/desktop/package.json').version.split('.').slice(0,2).join('.')")
+          VERSION="$BASE.${{ steps.v.outputs.stamp }}"
+          if gh release view "v$VERSION" --repo "$PUBLIC_REPO" >/dev/null 2>&1; then
+            echo "::error::v$VERSION already exists (one build per hour). Wait for the next hour or delete that release."
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      - name: Create the draft release
+        run: |
+          VERSION=${{ steps.ver.outputs.version }}
+          git -C src log --no-merges --format='- %s' -n 30 > notes.md
+          gh release create "v$VERSION" --repo "$PUBLIC_REPO" --draft \
+            --title "Dexterity Connect $VERSION${{ steps.v.outputs.channel == 'beta' && ' (beta)' || '' }}" --notes-file notes.md
+
+  test:
+    name: typecheck + tests
+    needs: prepare
+    if: needs.prepare.outputs.skip_tests != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+
+  desktop:
+    name: desktop (${{ matrix.name }})
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: windows
+            os: windows-latest
+            args: --win nsis
+            files: apps/desktop/release/*.exe
+          - name: macos
+            os: macos-latest
+            args: --mac dmg --arm64 --x64
+            files: apps/desktop/release/*.dmg
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Stamp version
+        shell: bash
+        run: npm version "$VERSION" --no-git-tag-version -w @dex/desktop --allow-same-version
+      - run: npm run build -w @dex/desktop
+      - name: Package installer
+        working-directory: apps/desktop
+        run: npx electron-builder ${{ matrix.args }} --publish never
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+          GH_TOKEN: ""
+      - name: Upload to the release
+        shell: bash
+        run: gh release upload "v$VERSION" ${{ matrix.files }} --repo "$PUBLIC_REPO" --clobber
+
+  hub:
+    name: hub (windows service)
+    needs: prepare
+    runs-on: windows-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: node apps/hub/scripts/build.mjs --sea
+      - name: Assemble service package
+        shell: pwsh
+        run: |
+          $out = "hub-package/DexterityConnectHub"
+          New-Item -ItemType Directory -Force $out | Out-Null
+          Copy-Item apps/hub/dist/DexterityConnectHub.exe $out
+          # the relay for large Rooms (mediasoup's worker, ISC licence) runs beside the hub
+          Copy-Item node_modules/mediasoup/worker/out/Release/mediasoup-worker.exe $out
+          Copy-Item apps/hub/packaging/* $out
+          Invoke-WebRequest -Uri "https://github.com/winsw/winsw/releases/download/v2.12.0/WinSW-x64.exe" -OutFile "$out/DexterityConnectHubService.exe"
+          Compress-Archive -Path $out -DestinationPath "hub-package/DexterityConnectHub-$env:VERSION-win-x64.zip"
+      - name: Upload to the release
+        shell: bash
+        run: gh release upload "v$VERSION" hub-package/*.zip --repo "$PUBLIC_REPO" --clobber
+
+  android:
+    name: android (apk)
+    needs: prepare
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Android SDK (pre-installed on the runner)
+        run: |
+          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0" > /dev/null
+      - run: npm ci
+      - name: Build the phone UI
+        run: npm run build -w @dex/mobile
+      - name: Sync into the Android project
+        working-directory: apps/mobile
+        run: npx cap sync android
+      - name: Build the signed APK
+        working-directory: apps/mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon -PdexVersionCode=${{ needs.prepare.outputs.code }} -PdexVersionName="$VERSION"
+          mkdir -p ../../../apk
+          cp app/build/outputs/apk/release/app-release.apk "../../../apk/DexterityConnect-$VERSION.apk"
+      - name: Upload to the release
+        run: gh release upload "v$VERSION" apk/*.apk --repo "$PUBLIC_REPO" --clobber
+
+  publish:
+    name: publish
+    needs: [prepare, test, desktop, hub, android]
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERSION: ${{ needs.prepare.outputs.version }}
+      CHANNEL: ${{ needs.prepare.outputs.channel }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.SOURCE_REPO }}
+          ref: ${{ needs.prepare.outputs.ref }}
+          token: ${{ secrets.SOURCE_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Fetch the uploaded installers
+        run: |
+          gh release download "v$VERSION" --repo "$PUBLIC_REPO" -D release-files
+          gh release view "v$VERSION" --repo "$PUBLIC_REPO" --json body -q .body > notes.md
+          ls -la release-files
+      - name: Write the update feed and checksums
+        run: |
+          node scripts/release/make-feed.mjs --dir release-files --channel "$CHANNEL" --version "$VERSION" \
+            --base-url "https://github.com/$PUBLIC_REPO/releases/download/v$VERSION" \
+            --notes-file notes.md --out "feed/$CHANNEL.json"
+          gh release upload "v$VERSION" release-files/SHA256SUMS.txt --repo "$PUBLIC_REPO" --clobber
+      - name: Fixed-name copies for direct download links
+        # releases/latest/download/<name> always points at the newest stable build, so the landing
+        # page can link to it directly without asking GitHub's API (which limits each office IP)
+        run: |
+          mkdir -p alias
+          for f in release-files/*; do
+            n=$(basename "$f")
+            case "$n" in
+              *Setup*.exe) a=DexterityConnect-Setup.exe ;;
+              *mac-arm64.dmg) a=DexterityConnect-mac-arm64.dmg ;;
+              *mac-x64.dmg) a=DexterityConnect-mac-x64.dmg ;;
+              *.apk) a=DexterityConnect.apk ;;
+              *Hub*.zip) a=DexterityConnectHub-win-x64.zip ;;
+              *) continue ;;
+            esac
+            cp "$f" "alias/$a"
+          done
+          gh release upload "v$VERSION" alias/* --repo "$PUBLIC_REPO" --clobber
+      - name: Publish the release
+        run: |
+          {
+            echo "## Dexterity Connect $VERSION"
+            echo
+            echo "Channel: **$CHANNEL**. Installed apps pick this up automatically."
+            echo
+            cat notes.md
+            echo
+            echo "| File | For |"
+            echo "| --- | --- |"
+            for f in release-files/*; do
+              n=$(basename "$f")
+              case "$n" in
+                *Setup*.exe) d="Windows 10/11 app" ;;
+                *mac-arm64.dmg) d="macOS, Apple Silicon" ;;
+                *mac-x64.dmg) d="macOS, Intel" ;;
+                *.apk) d="Android phones" ;;
+                *Hub*.zip) d="Office hub (Windows service)" ;;
+                *) continue ;;
+              esac
+              echo "| \`$n\` | $d |"
+            done
+            echo
+            echo "The files without a version number are the same builds, for links that always get the newest."
+            echo "Verify downloads with \`SHA256SUMS.txt\`."
+          } > release-notes.md
+          if [ "$CHANNEL" = "beta" ]; then FLAGS="--prerelease --latest=false"; else FLAGS="--latest"; fi
+          gh release edit "v$VERSION" --repo "$PUBLIC_REPO" --draft=false --notes-file release-notes.md $FLAGS
+      - name: Update the feed installed apps read
+        run: |
+          git config --global user.name "Dexterity Connect release bot"
+          git config --global user.email "noreply@users.noreply.github.com"
+          URL="https://x-access-token:${GH_TOKEN}@github.com/${PUBLIC_REPO}.git"
+          if ! git clone --quiet --depth 1 --branch update-feed "$URL" feedrepo 2>/dev/null; then
+            mkdir feedrepo && cd feedrepo && git init -q -b update-feed && git remote add origin "$URL" && cd ..
+          fi
+          cp "feed/$CHANNEL.json" "feedrepo/$CHANNEL.json"
+          cd feedrepo
+          git add "$CHANNEL.json"
+          git commit -q -m "$CHANNEL: $VERSION"
+          for i in 1 2 3 4; do
+            git push -q origin update-feed && break
+            git pull -q --rebase origin update-feed || true
+            sleep $((i * 3))
+          done
+
+  # a build that failed half-way leaves an unpublished draft behind: remove it
+  cleanup:
+    name: remove failed draft
+    needs: [prepare, test, desktop, hub, android, publish]
+    if: ${{ (failure() || cancelled()) && needs.prepare.outputs.version != '' }}
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - run: gh release delete "v${{ needs.prepare.outputs.version }}" --repo "${{ github.repository }}" --yes || true
