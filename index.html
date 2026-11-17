@@ -247,10 +247,10 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <div class="start reveal" id="start">
         <div class="start-head"><span class="label">Start here</span><h3>Two downloads get the office running</h3></div>
         <div class="start-steps">
-          <a class="start-dl" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-win-x64.zip">
+          <a class="start-dl" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-Setup.exe">
             <span class="n">1</span>
-            <span class="t"><b>Office hub (server)</b><span>For the one PC that stays on. Extract the zip, then right-click <code>Install-Hub.cmd</code> → <b>Run as administrator</b>.</span></span>
-            <span class="go">Download hub · .zip</span>
+            <span class="t"><b>Office hub (server)</b><span>For the one PC that stays on. Run it and click <b>Yes</b>: it installs the service, opens the firewall, keeps the PC awake and checks the hub answers. After that the hub updates itself.</span></span>
+            <span class="go">Download hub setup · .exe</span>
           </a>
           <a class="start-dl" data-asset="win" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-Setup.exe">
             <span class="n">2</span>
@@ -273,7 +273,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9h11v8a1.5 1.5 0 0 1-1.5 1.5h-1V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5H8A1.5 1.5 0 0 1 6.5 17zM4 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0zm2.6-4.9-.9-1.3a.3.3 0 0 1 .5-.3l.9 1.4a5 5 0 0 1 3.8 0l.9-1.4a.3.3 0 0 1 .5.3l-.9 1.3"/></svg>Android</span>
           <span class="meta" data-meta="apk">Android 7 and newer · anywhere</span><span class="go">Download APK →</span>
         </a>
-        <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-win-x64.zip">
+        <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-Setup.exe">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4zM7.5 7.5h.01M7.5 16.5h.01"/></svg>Office hub</span>
           <span class="meta" data-meta="hub">Windows service for one always-on PC</span><span class="go">Download hub →</span>
         </a>
@@ -434,6 +434,10 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h3l2-5 4 10 2-5h5"/></svg></div><h3>Works with the hub off</h3><p>If the hub PC is down, PCs find each other and pass encrypted Direct messages straight across; the history catches up when it is back.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 5 6v5.5c0 4.3 2.9 7.9 7 9 4.1-1.1 7-4.7 7-9V6z"/></svg></div><h3>Guests and compliance</h3><p>Invite clients to chosen Spaces for a set time. Retention, legal holds, exports, edit windows, upload limits and a usage report for admins.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19.5V11M10 19.5V5M15 19.5v-6M20 19.5V8"/></svg></div><h3>Polls, forms and whiteboards</h3><p>Ask the room with a poll or a form, keep shared notes per conversation, and sketch on a live whiteboard that posts as an image.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4M8 14.5h3"/></svg></div><h3>Zoho Calendar, both ways</h3><p>Each person connects their own Zoho Calendar once. Meetings appear there and follow every change; their Zoho events show here as busy time, so nobody is booked twice.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h9l3 3v14H6zM9 10.5h6M9 13.5h6M9 16.5h3"/></svg></div><h3>Holidays from the circular</h3><p>Drop management's holiday circular PDF into Nib's conversation. Nib reads every row, checks it, and registers the year with one click; compensatory working days stay working days.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.5l4 4 10-10M4 4.5h16v15H4z"/></svg></div><h3>A Setup check, not a manual</h3><p>The Control room opens with a live check of the hub, backups, seating, Nib, outside access, calls and Zoho, each with the one thing to do. Only what needs a person is left to you.</p></div>
+        <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4.5v4h-4"/></svg></div><h3>Updates itself, server too</h3><p>Apps and the office hub update themselves. The hub installs at night after a backup, never during a meeting, and goes back to the previous version by itself if a new one does not start.</p></div>
         <div class="card reveal"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7.5h16v10H4zM7 10.5h.01M10 10.5h.01M13 10.5h.01M16 10.5h.01M8 14.5h8"/></svg></div><h3>Made for the keyboard</h3><p>Ctrl+G to go anywhere, Ctrl+Shift+F to search, Alt+arrows between conversations, Ctrl+/ for every shortcut, plus compact density, text size and quiet notification sounds.</p></div>
       </div>
 
@@ -478,13 +482,15 @@ footer a { color: var(--ink-2); text-decoration: none; }
   <section class="block grid-bg" id="setup">
     <div class="wrap">
       <span class="label reveal">Set-up</span>
-      <h2 class="reveal">Running in an afternoon.</h2>
+      <h2 class="reveal">It sets itself up.</h2>
+      <p class="lede reveal">A new hub configures the office on its first start: the real floor plan with everyone's names on their seats, this year's holidays from management's circular, Nib's day-sheet times, the notice desks, nightly backups to a second disk, and a live Setup check at the top of the Control room. What is left needs a person.</p>
       <div class="steps">
-        <div class="step reveal"><h3>Install the hub</h3><p>Unzip it on one always-on PC (for example <span class="mono">D:\Dexterity Connect Hub</span>) and double-click <span class="mono">Install-Hub.cmd</span>. It becomes a Windows service.</p></div>
-        <div class="step reveal"><h3>Install the app</h3><p>Run the installer on your PC and click <b>Request access</b>. The first person becomes the owner.</p></div>
-        <div class="step reveal"><h3>Approve colleagues</h3><p>As colleagues install, approve them in the Control room by matching their device code.</p></div>
-        <div class="step reveal"><h3>Open it to home (optional)</h3><p>Deploy the gateway to your free Cloudflare account with <span class="mono">Deploy-Gateway.cmd</span>, paste its address in <b>Control room → Outside the office</b> and switch it on.</p></div>
+        <div class="step reveal"><h3>Run the hub setup</h3><p>On the PC that stays on, run <span class="mono">DexterityConnectHub-Setup.exe</span> and click <b>Yes</b>. It becomes a Windows service, and from then on updates itself at 03:00, after the backup and never during a meeting.</p></div>
+        <div class="step reveal"><h3>Become the owner</h3><p>Install the app on your PC and click <b>Request access</b>. The first person is the owner; the <b>Setup check</b> shows what is left.</p></div>
+        <div class="step reveal"><h3>Paste one token</h3><p>For home and mobile data, make a free Cloudflare account and paste one API token into <b>Set up with Cloudflare</b>. The hub deploys the gateway and the meeting site, pins them to itself and makes the call relay.</p></div>
+        <div class="step reveal"><h3>Bring people in</h3><p>Approve each colleague by matching their device code. They take their seat on the floor plan, add their phone with a QR code and connect their own Zoho Calendar.</p></div>
       </div>
+      <p class="channel-note reveal">The whole list, click by click: <a href="assets/Dexterity-Connect-Office-Setup.pdf">what you still do by hand (PDF, 6 pages)</a>.</p>
       <table class="keys reveal">
         <tr><td><kbd>Ctrl</kbd><kbd>G</kbd></td><td>Go to anyone, any Space, any command</td></tr>
         <tr><td><kbd>Ctrl</kbd><kbd>1</kbd>–<kbd>8</kbd></td><td>Pulse, Direct, Spaces, Desk, Calendar, Directory, Meet, Notices</td></tr>
@@ -506,6 +512,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <details class="reveal"><summary>Does anything go over the internet?</summary><p>In the office, no: messages, files and sign-ins stay between office PCs and the hub. If the office turns on access from outside, devices away from the office reach the hub through a small relay on the office's own Cloudflare account. Each device has its own encrypted channel to the hub, checked against the hub's certificate, so the relay only ever sees scrambled data. The office opens no ports.</p></details>
         <details class="reveal"><summary>What happens if the hub PC is switched off?</summary><p>Apps show a reconnecting state and keep everything readable. They reconnect on their own when the hub returns, and follow it if its IP address changes.</p></details>
         <details class="reveal"><summary>Why does Windows SmartScreen warn on first install?</summary><p>The installers are not yet signed with a paid code-signing certificate. Click <b>More info → Run anyway</b>. You can check every download against <span class="mono">SHA256SUMS.txt</span> on the release.</p></details>
+        <details class="reveal"><summary>Who updates the office hub?</summary><p>Nobody: after the first setup the hub checks for new versions every few hours, downloads and verifies them, and installs at 03:00 after a fresh backup, never while a meeting, call or webinar is live. It is offline for about a minute. If the new version does not start, it goes back to the previous one and tells the administrators.</p></details>
         <details class="reveal"><summary>How do updates work?</summary><p>The app checks when it opens, every few hours and on demand. It downloads in the background from the hub's mirror (or GitHub), verifies the file and installs when you restart.</p></details>
         <details class="reveal"><summary>Can I use it at home or on mobile data?</summary><p>Yes, once an administrator turns on access from outside the office. Phones and laptops that have joined in the office simply keep working outside. Add a new one from <b>Preferences → Your devices</b> on a PC that is already in: a QR code for a phone, a text code for a laptop. They move back to the office network on their own.</p></details>
       </div>
@@ -537,7 +544,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
     const all = (await res.json()).filter((r) => !r.draft && r.assets && r.assets.length);
     const rel = all.find((r) => !r.prerelease) || all[0];
     if (!rel) { note.textContent = 'The first release is on its way. Check back shortly.'; return; }
-    const pick = { win: /Setup.*\.exe$/, 'mac-arm64': /mac-arm64\.dmg$/, 'mac-x64': /mac-x64\.dmg$/, apk: /\.apk$/, hub: /Hub.*\.zip$/ };
+    const pick = { win: /^DexterityConnect-Setup[-.]/, 'mac-arm64': /mac-arm64\.dmg$/, 'mac-x64': /mac-x64\.dmg$/, apk: /\.apk$/, hub: /^DexterityConnectHub-Setup[-.]/ };
     const mb = (n) => `${Math.round(n / 1e6)} MB`;
     for (const [k, re] of Object.entries(pick)) {
       const a = rel.assets.find((x) => re.test(x.name));
