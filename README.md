@@ -24,9 +24,11 @@ The newest builds are on the **[Releases page](https://github.com/dexterity-admi
 | Mac with Apple silicon | `DexterityConnect-<version>-mac-arm64.dmg` | Right-click → Open the first time. |
 | Intel Mac | `DexterityConnect-<version>-mac-x64.dmg` | |
 | Android phone | `DexterityConnect-<version>.apk` | Allow installs from your browser when asked. Works on the office Wi-Fi. |
-| The office hub PC | `DexterityConnectHub-<version>-win-x64.zip` | Unzip, then double-click `Install-Hub.cmd`. |
+| The office hub PC | `DexterityConnectHub-Setup-<version>.exe` | Run it and click *Yes*. It installs the hub as a Windows service, opens the firewall, keeps the PC awake and checks the hub answers. After that the hub updates itself. (`DexterityConnectHub-<version>-win-x64.zip` is the by-hand fallback.) |
 
-Every release includes `SHA256SUMS.txt`. Installed apps update themselves: they check when they open, every few hours and on demand. They download from the office hub's mirror when they can, so PCs without internet still update.
+Every release includes `SHA256SUMS.txt`. Installed apps update themselves: they check when they open, every few hours and on demand. They download from the office hub's mirror when they can, so PCs without internet still update. The office hub updates itself too: it installs a new version at 03:00 after a backup, never during a meeting, and goes back to the previous one by itself if the new one does not start.
+
+Fixed-name links always give the newest stable build, for example [`DexterityConnectHub-Setup.exe`](https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-Setup.exe) and [`DexterityConnect-Setup.exe`](https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-Setup.exe).
 
 **Channels:** releases marked *Pre-release* are **beta** builds. Installed apps receive them only if *Preferences → Updates → Beta* is chosen. Everyone else gets **stable** releases.
 
@@ -49,9 +51,18 @@ Every release includes `SHA256SUMS.txt`. Installed apps update themselves: they 
 
 ## Setting up an office
 
-1. On one always-on PC, unzip the hub (for example to `D:\Dexterity Connect Hub`) and run `Install-Hub.cmd`.
-2. Install the app on your PC and click **Request access**. You become the owner.
-3. Approve colleagues in the **Control room** as they install, matching the device code shown on their screen.
+A new hub sets the office up on its first start: the real floor plan with everyone's names on their seats, this
+year's holidays from management's circular, Nib's day-sheet times, the notice desks, nightly backups to a second
+disk, and a live **Setup check** at the top of the Control room. What is left needs a person:
+
+1. On the PC that stays on, run `DexterityConnectHub-Setup.exe` and click **Yes**.
+2. Install the app on your PC and click **Request access**. You become the owner; the **Setup check** shows what is left.
+3. For home and mobile data, paste one Cloudflare API token into **Control room → Outside the office → Set up with Cloudflare**.
+4. For Zoho Calendar, register the office's Zoho client once in **Control room → Integrations → Zoho Calendar**; each person then connects their own calendar.
+5. Approve colleagues as they install, matching the device code shown on their screen.
+
+Click by click: [what you still do by hand (PDF)](https://dexterity-admin.github.io/dexterity-connect/assets/Dexterity-Connect-Office-Setup.pdf).
+Every year, drop the new holiday circular PDF into your conversation with Nib and click **Register**.
 
 ---
 
