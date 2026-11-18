@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "stable",
-  "version": "0.1.104",
-  "releasedAt": "2026-11-17T21:36:15.664Z",
-  "notes": "- Hub install test: start the self-update part on a clean PC",
+  "version": "0.1.105",
+  "releasedAt": "2026-11-18T08:08:15.516Z",
+  "notes": "- Fix Write on Nib's register, and phones that cannot reach the office network",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.104-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.104/DexterityConnect-0.1.104-mac-arm64.dmg",
-      "size": 165026916,
-      "sha512": "ob8FKaPbgOq+Nrv9HXjC2Fe1s8WQpT0JCzkCJXGylqwlHGnL7n5EGtqLzKxaTVUDV9jDJEsXTe8WR/4yY2CrlA=="
+      "file": "DexterityConnect-0.1.105-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.105/DexterityConnect-0.1.105-mac-arm64.dmg",
+      "size": 165017015,
+      "sha512": "wdyH2CJ5FC9xFx/v0XjIoPkz+k6rRMCOs0qEWwLGv0yca2p2HKiCBqsThH7ac8+Rh6NiqGZ6qHHOus3RsPfNPQ=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.104-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.104/DexterityConnect-0.1.104-mac-x64.dmg",
-      "size": 169129036,
-      "sha512": "S64IUueDC1IfGX4y4PeKIlZ0BoapTsNUa4qsyXHvM0yVgkCbUOPzn60gkG44coXdIaTm6fjYgcf3jQkUi8L1tQ=="
+      "file": "DexterityConnect-0.1.105-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.105/DexterityConnect-0.1.105-mac-x64.dmg",
+      "size": 169127507,
+      "sha512": "svtj8LLwNoFp7Bw4afNxSJNITs5pvKiUl/twSx9kjSh6jMeGJLCnr0OPahwM8RadGfrA/BKh++xQ8F56uwiI1g=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.104.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.104/DexterityConnect-0.1.104.apk",
-      "size": 17916369,
-      "sha512": "cbQm3QZgHj9JjvZizy+M+B5nNyM/vMqaVg3nIOsDFGwCvAcLh/q/tV8a4KA4c6sDMHMoYr3ZAt9Fn688u7Qkxg=="
+      "file": "DexterityConnect-0.1.105.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.105/DexterityConnect-0.1.105.apk",
+      "size": 17917377,
+      "sha512": "uKWYfg5pnabQWUmj3vpIqKvop2M1rjjAPqqqgvQGEvMlGKOp9o3sszco2qvzmhUwAsoDVQoEmqfJJqkTdnsNdA=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.104.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.104/DexterityConnect-Setup-0.1.104.exe",
-      "size": 157113926,
-      "sha512": "+ItxUwarGLBpK6Uw8pdh/x6x3UHQi94KX6wOcHBF7wTcSgehYrYQdCFUMJGp2UdR9xj+ThGIbATGLIGeXDzVQg=="
+      "file": "DexterityConnect-Setup-0.1.105.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.105/DexterityConnect-Setup-0.1.105.exe",
+      "size": 157114229,
+      "sha512": "AzHL7GG3NzGrTuJjvV2InQGipU5QFYUI1zxoJQ7ifs3FvGAM0quT4OYgf9mx57uII7WZvztkIc0FN0Nd2+S5uQ=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-Setup-0.1.104.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.104/DexterityConnectHub-Setup-0.1.104.exe",
-      "size": 30591019,
-      "sha512": "0PbPqxLQ8lPLTH9BEfMwNmM7A9qXppx7QG3PPXnXbEAAZnYIXtZ9z5NSwKvre3sXQjhhmNP3lSzhjE5lj4znjQ=="
+      "file": "DexterityConnectHub-Setup-0.1.105.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.105/DexterityConnectHub-Setup-0.1.105.exe",
+      "size": 30580748,
+      "sha512": "Fr85TGbi836U5h/1Nimpf/x3KiLFcWtkD1gyi5jjNpDIXHxZJvdGQYBa7cidgURxAQ3Rdy4b3N6ECDrZ1dp9Pg=="
     }
   ]
 }
