@@ -213,12 +213,12 @@ footer a { color: var(--ink-2); text-decoration: none; }
         <h1>Your office,<br />connected.</h1>
         <p>Messages, files and calls that live on the office's own hub. Fast on the office network, and with you at home or on mobile data. No accounts to remember.</p>
         <div class="cta"><a class="pill amber" href="#download">Download for Windows</a><a class="pill ghost see" href="#features">See what it does</a><a class="pill ghost" href="#film">▶ Watch the film</a></div>
-        <div class="meta" id="hero-meta">Windows 10 &amp; 11 · macOS · Android · updates itself</div>
+        <div class="meta" id="hero-meta">Windows 10 &amp; 11 · macOS · Android · iPhone · updates itself</div>
       </div>
       <div class="beat" data-beat="1"><span class="label">01 · Discovery</span><h2>It finds everyone.</h2><p>Every PC finds the office hub on its own and signs in with Windows. An admin approves each new colleague's device by matching an 8-character code.</p></div>
       <div class="beat" data-beat="2"><span class="label">02 · Live</span><h2>Instant, across the floor.</h2><p>Spaces, Direct conversations, side-tracks and mentions arrive in milliseconds over the office network.</p></div>
       <div class="beat" data-beat="3"><span class="label">03 · Offline-first</span><h2>Cut the cable.<br />Keep talking.</h2><p>In the office nothing depends on the internet. The hub keeps history, mirrors updates and approves devices, all on the premises.</p></div>
-      <div class="beat" data-beat="4"><span class="label">04 · Everywhere</span><h2>In your pocket, too.</h2><p>Android phones and home laptops join the same conversations on the office Wi-Fi, at home or on mobile data, encrypted all the way to the office hub.</p></div>
+      <div class="beat" data-beat="4"><span class="label">04 · Everywhere</span><h2>In your pocket, too.</h2><p>Android phones, iPhones and home laptops join the same conversations on the office Wi-Fi, at home or on mobile data, encrypted all the way to the office hub.</p></div>
       <div class="scroll-hint">Scroll</div>
       <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -273,6 +273,10 @@ footer a { color: var(--ink-2); text-decoration: none; }
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 9h11v8a1.5 1.5 0 0 1-1.5 1.5h-1V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5H8A1.5 1.5 0 0 1 6.5 17zM4 9.5a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zm14 0a1 1 0 0 1 2 0v5a1 1 0 0 1-2 0zM7 8a5 5 0 0 1 10 0zm2.6-4.9-.9-1.3a.3.3 0 0 1 .5-.3l.9 1.4a5 5 0 0 1 3.8 0l.9-1.4a.3.3 0 0 1 .5.3l-.9 1.3"/></svg>Android</span>
           <span class="meta" data-meta="apk">Android 7 and newer · anywhere</span><span class="go">Download APK →</span>
         </a>
+        <a class="dl reveal" href="#iphone">
+          <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3.5h8a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 19V5A1.5 1.5 0 0 1 8 3.5zM11 17.5h2"/></svg>iPhone</span>
+          <span class="meta">iOS 16.4 and newer · web app from your office</span><span class="go">Add it from your PC →</span>
+        </a>
         <a class="dl reveal" data-asset="hub" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnectHub-Setup.exe">
           <span class="os"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5h16v6H4zM4 13.5h16v6H4zM7.5 7.5h.01M7.5 16.5h.01"/></svg>Office hub</span>
           <span class="meta" data-meta="hub">Windows service for one always-on PC</span><span class="go">Download hub →</span>
@@ -280,7 +284,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
       </div>
       <div class="scan-card reveal">
         <img src="assets/get-qr.svg" alt="QR code that opens the Android download page" width="132" height="132" />
-        <div><h3>On your phone</h3><p>Point the camera here to download the Android app. To sign in as yourself, add the phone from your office PC: <b>Preferences → Your devices → Add my phone</b>. That QR code installs and pairs it in one go, with no approval needed.</p></div>
+        <div><h3>On your phone</h3><p>Point the camera here to download the Android app. To sign in as yourself, add the phone from your office PC: <b>Preferences → Your devices → Add my phone</b>. That QR code installs and pairs it in one go, with no approval needed. On an iPhone, the same QR code opens Dexterity Connect for iPhone in Safari: add it to the Home Screen and paste the code there.</p></div>
       </div>
       <p class="channel-note">Older Intel Mac? <a data-asset="mac-x64" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest/download/DexterityConnect-mac-x64.dmg">Download the Intel version</a>.</p>
       <p class="channel-note" id="channel-note">Looking up the newest release…</p>
@@ -511,6 +515,7 @@ footer a { color: var(--ink-2); text-decoration: none; }
       <div class="faq">
         <details class="reveal"><summary>Does anything go over the internet?</summary><p>In the office, no: messages, files and sign-ins stay between office PCs and the hub. If the office turns on access from outside, devices away from the office reach the hub through a small relay on the office's own Cloudflare account. Each device has its own encrypted channel to the hub, checked against the hub's certificate, so the relay only ever sees scrambled data. The office opens no ports.</p></details>
         <details class="reveal"><summary>What happens if the hub PC is switched off?</summary><p>Apps show a reconnecting state and keep everything readable. They reconnect on their own when the hub returns, and follow it if its IP address changes.</p></details>
+        <details class="reveal" id="iphone"><summary>How do I use it on an iPhone?</summary><p>On iPhone, Dexterity Connect is a web app your office serves from its own Cloudflare account; there is nothing in the App Store. On your office PC open <b>Preferences → Your devices → Add my phone</b> and point the iPhone's camera at the QR code. Safari opens Dexterity Connect for iPhone: copy the code, tap <b>Share → Add to Home Screen</b>, open it from the Home Screen and tap <b>Paste the code</b>. It reaches the office through its way in from outside (the administrator turns that on once), encrypted all the way to the office hub. Notifications need iOS 16.4 or later and the app on the Home Screen. Calls ring only while the app is open, because iPhone does not let web apps ring in the background.</p></details>
         <details class="reveal"><summary>Why does Windows SmartScreen warn on first install?</summary><p>The installers are not yet signed with a paid code-signing certificate. Click <b>More info → Run anyway</b>. You can check every download against <span class="mono">SHA256SUMS.txt</span> on the release.</p></details>
         <details class="reveal"><summary>Who updates the office hub?</summary><p>Nobody: after the first setup the hub checks for new versions every few hours, downloads and verifies them, and installs at 03:00 after a fresh backup, never while a meeting, call or webinar is live. It is offline for about a minute. If the new version does not start, it goes back to the previous one and tells the administrators.</p></details>
         <details class="reveal"><summary>How do updates work?</summary><p>The app checks when it opens, every few hours and on demand. It downloads in the background from the hub's mirror (or GitHub), verifies the file and installs when you restart.</p></details>

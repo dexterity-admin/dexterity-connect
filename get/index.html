@@ -49,6 +49,21 @@ code { font-family: var(--mono); font-size: 12px; word-break: break-all; color: 
     <p>The office messenger of Dexterity Design Services. To use it on your own phone or laptop, open <b>Preferences → Your devices</b> on your office PC and add it from there.</p>
   </section>
 
+  <div class="card hidden" id="iphone">
+    <a class="btn primary hidden" id="open-iphone" href="#">Open Dexterity Connect for iPhone</a>
+    <ol id="iphone-steps">
+      <li>Tap <b>Open Dexterity Connect for iPhone</b>. It opens in Safari, from your office's own server.</li>
+      <li>Follow it to copy your code and <b>Add to Home Screen</b> (Share → Add to Home Screen).</li>
+      <li>Open <b>Dexterity Connect</b> from the Home Screen and tap <b>Paste the code</b>.</li>
+    </ol>
+    <p class="note" id="iphone-note">There is nothing to download from the App Store: on iPhone, Dexterity Connect is a web app your office serves itself. Notifications need iOS 16.4 or later.</p>
+    <div class="row hidden" id="iphone-paste">
+      <label class="note" for="paste">Have a code from an email or a chat? Paste it here:</label>
+      <textarea id="paste" rows="3" style="font: 12px var(--mono); background: #0a1c1f; color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 10px" placeholder="DXP1-…" autocapitalize="none" autocorrect="off" spellcheck="false"></textarea>
+      <p class="note" id="paste-msg" role="status"></p>
+    </div>
+  </div>
+
   <div class="card" id="android">
     <a class="btn primary" id="get-apk" href="https://github.com/dexterity-admin/dexterity-connect/releases/latest">Download for Android</a>
     <a class="btn hidden" id="open-app" href="#">Already installed? Open the app</a>
@@ -82,7 +97,9 @@ code { font-family: var(--mono); font-size: 12px; word-break: break-all; color: 
   const code = m ? m[0] : null;
   const ua = navigator.userAgent;
   const android = /Android/i.test(ua);
-  const mobileOther = /iPhone|iPad|iPod/i.test(ua);
+  // an iPad says it is a Mac, but has a touch screen
+  const ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  const mobileOther = ios;
   let kind = 'phone';
   if (code) {
     try {
@@ -92,7 +109,7 @@ code { font-family: var(--mono); font-size: 12px; word-break: break-all; color: 
     } catch (e) { /* the app checks the code properly */ }
     $('with-code').classList.remove('hidden');
     $('no-code').classList.add('hidden');
-    $('what').textContent = android ? 'phone' : kind;
+    $('what').textContent = android || mobileOther ? 'phone' : kind;
     $('code').textContent = code;
   }
   if (!android) {
@@ -120,6 +137,46 @@ code { font-family: var(--mono); font-size: 12px; word-break: break-all; color: 
   } else if (!code) {
     $('paste-hint').textContent = 'Then pair it from your office PC: Preferences → Your devices → Add my phone.';
   }
+  // iPhone and iPad: Dexterity Connect for iPhone, a web app on the office's own gateway (the address is
+  // in the code). The code goes on in the #fragment, which the browser never sends to a server.
+  const gatewayOf = (c) => {
+    try {
+      const s = c.slice(5).replace(/-/g, '+').replace(/_/g, '/');
+      const j = JSON.parse(atob(s + '='.repeat((4 - (s.length % 4)) % 4)));
+      return typeof j.u === 'string' && /^https:\/\/[^\s/#?]+(\/[^\s#?]*)?$/.test(j.u) ? j.u.replace(/\/+$/, '') : '';
+    } catch (e) { return null; }
+  };
+  const iphone = (c) => {
+    $('iphone').classList.remove('hidden');
+    $('android').classList.add('hidden');
+    $('desktop').classList.add('hidden');
+    $('version').classList.add('hidden');
+    if (!c) {
+      $('iphone-note').textContent = 'To add your iPhone, open Preferences → Your devices → Add my phone on your office PC and point the iPhone\'s camera at the code. On iPhone, Dexterity Connect is a web app your office serves itself: there is nothing in the App Store.';
+      $('iphone-paste').classList.remove('hidden');
+      return;
+    }
+    const gw = gatewayOf(c);
+    if (gw === null) { $('iphone-note').textContent = 'That code is not complete. Copy all of it, starting with DXP1-.'; return; }
+    if (!gw) {
+      $('iphone-steps').classList.add('hidden');
+      $('iphone-note').innerHTML = '<b>Your office has not set up access from outside yet.</b> An iPhone always reaches the office that way, even on the office Wi-Fi. Ask your administrator to turn it on (Control room → Outside the office), then make a new code on your PC.';
+      return;
+    }
+    const to = `${gw}/app/#${c}`;
+    const open = $('open-iphone');
+    open.href = to;
+    open.classList.remove('hidden');
+    // the camera brought the person here for this: go straight on (Back returns here)
+    if (c === code) setTimeout(() => location.assign(to), 600);
+  };
+  if (ios) iphone(code);
+  $('paste').addEventListener('input', () => {
+    const p = ($('paste').value.match(/DXP1-[A-Za-z0-9_-]+/) || [''])[0];
+    $('paste-msg').textContent = p ? '' : $('paste').value.trim() ? 'That is not a pairing code. Copy all of it, starting with DXP1-.' : '';
+    if (p) { $('iphone-paste').classList.add('hidden'); $('iphone-note').textContent = ''; $('iphone-steps').classList.remove('hidden'); iphone(p); }
+  });
+
   $('copy').addEventListener('click', () => { void copy().then((ok) => { $('copy').textContent = ok ? 'Copied' : 'Select and copy below'; }); });
 
   fetch('https://api.github.com/repos/dexterity-admin/dexterity-connect/releases/latest')
