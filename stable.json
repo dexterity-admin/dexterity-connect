@@ -1,44 +1,44 @@
 {
   "schema": 1,
   "channel": "stable",
-  "version": "0.1.109",
-  "releasedAt": "2026-11-19T09:36:44.681Z",
-  "notes": "- Dexterity Sheets in Connect: Nib answers from the Sheets server, workbook cards open at the cell",
+  "version": "0.1.110",
+  "releasedAt": "2026-11-20T09:59:33.347Z",
+  "notes": "- App update test: answer the setup's message with OK, so reopening the app is checked too",
   "assets": [
     {
       "platform": "mac-arm64",
-      "file": "DexterityConnect-0.1.109-mac-arm64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.109/DexterityConnect-0.1.109-mac-arm64.dmg",
-      "size": 152933730,
-      "sha512": "8XZ0AUsCZA8g6vZvsgMJS4WKzGLOhzSQiO4CTnXxcYu9kdpdvaAI/Oi1bUBemC33565ae4duK0pin1Bk+J0Ung=="
+      "file": "DexterityConnect-0.1.110-mac-arm64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.110/DexterityConnect-0.1.110-mac-arm64.dmg",
+      "size": 152939339,
+      "sha512": "4f49qGCPojQ7p8YSodag1LTn7FzDu7czOTyMMJGH2XI8sBouHmvAavHkAPbYU7KWDQpZ/oVVlcz3/cqUlQY9aQ=="
     },
     {
       "platform": "mac-x64",
-      "file": "DexterityConnect-0.1.109-mac-x64.dmg",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.109/DexterityConnect-0.1.109-mac-x64.dmg",
-      "size": 157055580,
-      "sha512": "LFLHn2puaa+Xfjge56IPgAtRmuypjML+FmgNRsvh1QculehhJz+Q4lPrlczvcITjUqN1qunoQncj/okq34tOmA=="
+      "file": "DexterityConnect-0.1.110-mac-x64.dmg",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.110/DexterityConnect-0.1.110-mac-x64.dmg",
+      "size": 157049128,
+      "sha512": "OBW09EGt85VWO8kzWIzETDWOMgE8l+HQ2Kff4IWtJ58kLVwPyNjEN57olOSK08pEQYMdWk+tqf41DkikaMKRyA=="
     },
     {
       "platform": "android",
-      "file": "DexterityConnect-0.1.109.apk",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.109/DexterityConnect-0.1.109.apk",
-      "size": 7421941,
-      "sha512": "MXCB7T9pdBBoV6j64GJfrTonhEQeEPcmJragS2c+kg15BnyAAdaOeDOTI5MwdxPn2XAYQBO9pSy6C7cF4YgEJw=="
+      "file": "DexterityConnect-0.1.110.apk",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.110/DexterityConnect-0.1.110.apk",
+      "size": 7426593,
+      "sha512": "whpLNQoqFEBXY1G8zIZHuz/uaa4AgvxzDjYxk79I6ZaYWpIa1UG340k1te2YbMvH25utbBX4ItagouuPRuRT/A=="
     },
     {
       "platform": "win-x64",
-      "file": "DexterityConnect-Setup-0.1.109.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.109/DexterityConnect-Setup-0.1.109.exe",
-      "size": 131466509,
-      "sha512": "j+D2iG6giokaPkLn0VoWKTmcDKu+la/UjdzLaA3PpONNsDGXiokFzvv0e35Z9hAlUIgAEeBntPaUEbMUDMR4tQ=="
+      "file": "DexterityConnect-Setup-0.1.110.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.110/DexterityConnect-Setup-0.1.110.exe",
+      "size": 131461624,
+      "sha512": "MSD527RSe6G6+FhvGk2an7r9phGRUNlupIutda1j8tn4meCGL9B72beZkOk7qxK6xy9sht9f0nO1Y7PiaYwtmA=="
     },
     {
       "platform": "hub-win-x64",
-      "file": "DexterityConnectHub-Setup-0.1.109.exe",
-      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.109/DexterityConnectHub-Setup-0.1.109.exe",
-      "size": 36463264,
-      "sha512": "rvwwVCmKWMG9WvV1F7w3Brl4OelSND9TkVaPmgTHtcH7/siT2r88bvjmGgGDV63lfuCIa1OTvdWu+g81u5qQ3Q=="
+      "file": "DexterityConnectHub-Setup-0.1.110.exe",
+      "url": "https://github.com/dexterity-admin/dexterity-connect/releases/download/v0.1.110/DexterityConnectHub-Setup-0.1.110.exe",
+      "size": 36439342,
+      "sha512": "wffVbuS5XFnYLyefj2mFaGFz0l9BEfg3y8KBLUryz5zSkYBQk4UpmJ3bX+jybPZgRWzI7/ovJD5vQMctqq4I1g=="
     }
   ]
 }
